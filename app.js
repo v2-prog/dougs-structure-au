@@ -459,10 +459,9 @@
       ]));
     });
     var tableHost = el("div", { id: "compare-table" });
-    var note = el("p", { class: "note" }, ["On a small screen the table moves sideways. The first column stays put."]);
-    root.appendChild(picks);
-    root.appendChild(note);
-    root.appendChild(tableHost);
+    var note = el("p", { class: "note compare-scroll-note" }, ["On a small screen the table moves sideways. The first column stays put."]);
+    var side = el("div", { class: "compare-side" }, [picks, note]);
+    root.appendChild(el("div", { class: "compare-layout" }, [side, tableHost]));
 
     var columns = [
       ["control", "Control"],
