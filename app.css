@@ -200,6 +200,26 @@ a:hover { color: var(--ink); }
   opacity: 1;
 }
 
+@media (max-width: 719px), (hover: none) {
+  .book-tip {
+    position: static;
+    opacity: 1;
+    width: auto;
+    max-width: none;
+    margin-top: 0.1rem;
+    padding: 0;
+    background: transparent;
+    color: var(--forest-deep);
+    font-size: 0.72rem;
+    pointer-events: none;
+  }
+  .brand-book {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
 .brand-sub {
   margin: 0;
   flex: 1 1 14rem;
@@ -532,15 +552,34 @@ h3 {
   color: var(--muted);
 }
 
+.rules {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+}
+
+.rules li { margin: 0.35rem 0; }
+
+.open-list { display: grid; gap: 0.75rem; }
+
+.open-day {
+  border: 1px solid var(--forest);
+  background: var(--green-bg);
+  padding: 0.75rem 0.8rem 0.85rem;
+}
+
+.open-day h3 { margin: 0; }
+
 button.cal-day {
   width: 100%;
+  min-width: 0;
   min-height: 44px;
   justify-content: center;
-  padding: 0.15rem;
+  padding: 0;
   background: transparent;
   color: var(--muted);
   border: 1px solid transparent;
   font-family: var(--sans);
+  font-size: 0.9rem;
 }
 
 button.cal-day:disabled {
