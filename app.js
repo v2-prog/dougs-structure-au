@@ -676,28 +676,30 @@
 
   function renderBooking(root) {
     var book = D.booking;
+    if (!book || !book.holidays || !book.slots) {
+      root.appendChild(p("The calendar is not available in this copy of the page."));
+      return;
+    }
     root.appendChild(el("p", { class: "lede" }, [
-      "Bookings for a Walk through Doug's Lab. Times are Canberra time. Choosing a time does not hold it."
+      "Open hours are 1:00 pm to 6:00 pm, Canberra time, on Saturday, Sunday, and ACT public school holidays. Other times are closed. Choosing a time does not hold it."
     ]));
-    root.appendChild(el("ul", { class: "rules" }, [
-      el("li", null, ["Saturday and Sunday, 1:00 pm–6:00 pm."]),
-      el("li", null, ["ACT public school holidays, the same hours."]),
-      el("li", null, ["Term-time weekdays, mornings, and anything after 6:00 pm are closed."])
-    ]));
-
-    var reveal = el("div", { class: "contact-reveal", hidden: "hidden" });
-    var list = el("div", { class: "open-list" });
     var monthLabel = el("p", { class: "cal-label" }, [""]);
     var grid = el("div", { class: "cal-grid", role: "grid" });
+    var hint = el("p", null, ["Choose an open day. Closed days stay blank."]);
+    var slots = el("div", { class: "slot-row" });
+    var reveal = el("div", { class: "contact-reveal", hidden: "hidden" });
     var today = startOfDay(new Date());
     var cursor = startOfMonth(today);
-    var pickedKey = "";
+    var pickedDay = null;
 
     function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
     function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
     function parseISO(value) {
-      var p = value.split("-");
-      return new Date(+p[0], +p[1] - 1, +p[2]);
+      var parts = value.split("-");
+      return new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    }
+    function clear(node) {
+      while (node.firstChild) node.removeChild(node.firstChild);
     }
     function inHoliday(d) {
       var t = startOfDay(d).getTime();
@@ -713,22 +715,6 @@
       var dow = day.getDay();
       return dow === 0 || dow === 6 || inHoliday(day);
     }
-    function dayKey(d) {
-      return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
-    }
-    function upcoming(limit) {
-      var out = [];
-      var d = new Date(today.getTime());
-      var last = parseISO(book.holidays[book.holidays.length - 1][1]);
-      while (d.getTime() <= last.getTime() && out.length < limit) {
-        if (isOpenDay(d)) out.push(new Date(d.getTime()));
-        d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
-      }
-      return out;
-    }
-    function clear(node) {
-      while (node.firstChild) node.removeChild(node.firstChild);
-    }
     function showContact(day, slotLabel) {
       clear(reveal);
       reveal.hidden = false;
@@ -742,43 +728,29 @@
         "Phone# ",
         el("a", { href: "tel:" + book.phoneTel }, [book.phoneDisplay])
       ]));
-      reveal.scrollIntoView({ block: "nearest" });
     }
-    function selectSlot(day, slotLabel, button) {
-      pickedKey = dayKey(day) + slotLabel;
-      root.querySelectorAll(".slot").forEach(function (node) {
-        node.setAttribute("aria-pressed", node === button ? "true" : "false");
-      });
-      showContact(day, slotLabel);
-    }
-    function slotButtons(day) {
-      var row = el("div", { class: "slot-row" });
+    function drawSlots() {
+      clear(slots);
+      reveal.hidden = true;
+      clear(reveal);
+      if (!pickedDay) {
+        hint.textContent = "Choose an open day. Closed days stay blank.";
+        return;
+      }
+      hint.textContent = pickedDay.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long" }) + ". 1:00 pm–6:00 pm.";
       book.slots.forEach(function (slot) {
         var btn = el("button", { type: "button", class: "slot" }, [slot[1]]);
-        if (pickedKey === dayKey(day) + slot[1]) btn.setAttribute("aria-pressed", "true");
-        btn.addEventListener("click", function () { selectSlot(day, slot[1], btn); });
-        row.appendChild(btn);
+        function choose() {
+          slots.querySelectorAll(".slot").forEach(function (node) { node.setAttribute("aria-pressed", "false"); });
+          btn.setAttribute("aria-pressed", "true");
+          showContact(pickedDay, slot[1]);
+        }
+        btn.addEventListener("click", choose);
+        btn.addEventListener("mouseenter", choose);
+        btn.addEventListener("focus", choose);
+        slots.appendChild(btn);
       });
-      return row;
     }
-
-    var days = upcoming(6);
-    root.appendChild(el("h2", null, ["Open times"]));
-    if (!days.length) {
-      list.appendChild(p("No open day is left in the published ACT term dates."));
-    }
-    days.forEach(function (day) {
-      var label = day.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long" });
-      var why = inHoliday(day) ? "School holiday" : "Weekend";
-      list.appendChild(el("section", { class: "open-day" }, [
-        el("h3", null, [label]),
-        el("p", { class: "label" }, [why + " · 1:00 pm–6:00 pm"]),
-        slotButtons(day)
-      ]));
-    });
-    root.appendChild(list);
-    root.appendChild(reveal);
-
     function draw() {
       monthLabel.textContent = cursor.toLocaleDateString("en-AU", { month: "long", year: "numeric" });
       clear(grid);
@@ -798,42 +770,51 @@
             type: "button",
             class: open ? "cal-day is-open" : "cal-day",
             disabled: open ? null : "disabled",
-            "aria-label": date.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long" }) + (open ? ", open, 1:00 pm to 6:00 pm" : ", closed")
+            "aria-pressed": "false",
+            "aria-label": date.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long" }) + (open ? ", open" : ", closed")
           }, [String(n)]);
           if (open) {
-            btn.addEventListener("click", function () {
-              var card = document.getElementById("day-" + dayKey(date));
-              if (card) card.scrollIntoView({ block: "start" });
-            });
+            function chooseDay() {
+              pickedDay = date;
+              grid.querySelectorAll(".cal-day").forEach(function (node) { node.setAttribute("aria-pressed", "false"); });
+              btn.setAttribute("aria-pressed", "true");
+              drawSlots();
+            }
+            btn.addEventListener("click", chooseDay);
+            btn.addEventListener("mouseenter", chooseDay);
+            btn.addEventListener("focus", chooseDay);
           }
           grid.appendChild(btn);
         })(i);
       }
     }
 
-    days.forEach(function (day, index) {
-      list.children[index].id = "day-" + dayKey(day);
-    });
-
     var prev = el("button", { type: "button", class: "ghost" }, ["Previous"]);
     var next = el("button", { type: "button", class: "ghost" }, ["Next"]);
     prev.addEventListener("click", function () {
       cursor = new Date(cursor.getFullYear(), cursor.getMonth() - 1, 1);
+      pickedDay = null;
       draw();
+      drawSlots();
     });
     next.addEventListener("click", function () {
       cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+      pickedDay = null;
       draw();
+      drawSlots();
     });
-    root.appendChild(el("h2", null, ["Month"]));
     root.appendChild(el("div", { class: "cal" }, [
       el("div", { class: "cal-nav" }, [prev, monthLabel, next]),
       grid
     ]));
+    root.appendChild(hint);
+    root.appendChild(slots);
+    root.appendChild(reveal);
     root.appendChild(el("p", { class: "note" }, [
       "School holidays follow ACT public school term dates. A teacher start day is closed. Private schools can differ."
     ]));
     draw();
+    drawSlots();
   }
 
   var renderers = {
