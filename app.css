@@ -162,10 +162,12 @@ a:hover { color: var(--ink); }
 .brand-book {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 0.45rem;
   min-height: 44px;
   text-decoration: none;
   color: inherit;
+  flex-wrap: wrap;
 }
 
 .brand-name {
@@ -175,29 +177,15 @@ a:hover { color: var(--ink); }
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0;
+}
+
+.book-label {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.15;
+  color: var(--forest-deep);
   border-bottom: 1px solid var(--forest);
-}
-
-.book-tip {
-  position: absolute;
-  z-index: 8;
-  left: 0;
-  top: calc(100% + 0.2rem);
-  width: max-content;
-  max-width: min(18rem, 72vw);
-  padding: 0.45rem 0.6rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--sans);
-  font-size: 0.82rem;
-  line-height: 1.35;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.brand-book:hover .book-tip,
-.brand-book:focus-visible .book-tip {
-  opacity: 1;
 }
 
 .brand-sub {
@@ -853,7 +841,7 @@ thead th:first-child {
     color: black;
     padding-bottom: 0;
   }
-  .skip-link, .nav-toggle, #site-nav, .book-tip { display: none !important; }
+  .skip-link, .nav-toggle, #site-nav { display: none !important; }
   .site-footer { position: static; border-top: 1px solid black; margin-top: 1.5rem; }
   .disclaimer-banner, .tag, .flag { background: white !important; color: black !important; }
   .card, .card > * { display: block !important; }
