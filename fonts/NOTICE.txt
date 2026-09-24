@@ -1,0 +1,5 @@
+Newsreader, IBM Plex Sans and IBM Plex Mono are used under the SIL Open Font License.
+These files are the Latin subsets published by Fontsource from the upstream OFL fonts.
+Reserved font names and the full license text travel with the upstream projects:
+Newsreader (Production Type / Google Fonts), IBM Plex (IBM).
+No remote font request is made by this site.

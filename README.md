@@ -6,7 +6,7 @@ Family, land & purpose structures — Australia only.
 **Domain reference:** [coeconomics.com](https://coeconomics.com)  
 **Workshop voice:** quiet field notebook, not a store.
 
-A static ten-room explainer for Australian households and purpose-driven groups.
+A static eleven-room explainer for Australian households and purpose-driven groups.
 
 Not a store, not a blog, not a booking site, and not a US nature-credits company.  
 No accounts. No lead-capture. No invented duty tables or dollar savings.
@@ -15,19 +15,24 @@ No accounts. No lead-capture. No invented duty tables or dollar savings.
 
 1. Home — decision screen  
 2. Household profile (answers stored in localStorage only)  
-3. Succession planner  
-4. Structure explorer — nineteen Australian structures, each with succession & continuity  
-5. Scenario workshop — including a live CGT / duty flag sketch  
+3. Succession planner — five lenses, estate vs non-estate assets, documents around a Will  
+4. Structure explorer — nineteen Australian structures, including testamentary discretionary trusts, each with succession and continuity  
+5. Scenario workshop — sell / gift / covenant / hold flags only  
 6. CLT / charity / co-op studio  
 7. Economic regenerative village  
-8. Compare — including succession columns  
-9. Action checklist  
-10. Glossary & timeline  
+8. Compare — control, lock, tax character, and succession columns  
+9. Action checklist — including the team group  
+10. Glossary and timeline  
+11. The team — legal and financial roles, order of engagement, further reading  
 
 Australia only. No LLCs, S-corps, FEIE, 1031, Augusta rule, or Delaware vehicles.
 
 Every page carries:  
 *General information only. Confirm with a registered tax agent and solicitor. Rules include 2026–28 announced reforms that may change.*
+
+Cards and definitions live in `data.js`. Household answers and checklist ticks use `localStorage` keys prefixed `dougslab:`.
+
+Fonts are self-hosted (Newsreader, IBM Plex Sans, IBM Plex Mono; SIL Open Font License). See `fonts/NOTICE.txt`.
 
 ## Deploy (Cloudflare Pages)
 
