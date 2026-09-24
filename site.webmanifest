@@ -1,0 +1,12 @@
+{
+  "name": "Doug’s Lab",
+  "short_name": "Doug’s Lab",
+  "description": "Family, land & purpose structures — Australia only",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F6F3EC",
+  "theme_color": "#2F5D4F",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
