@@ -24,13 +24,32 @@ window.DOUGS_LAB = {
     { href: "checklist.html", id: "checklist", n: "09", label: "Action checklist", line: "Ticks stay on this browser." },
     { href: "glossary.html", id: "glossary", n: "10", label: "Glossary and timeline", line: "Terms, then advice, documents, lodgement, land." },
     { href: "team.html", id: "team", n: "11", label: "The team", line: "Who does what, and in what order." },
-    { href: "booking.html", id: "booking", n: "12", label: "Walk through", line: "Book a conversation. Phone or email. No form." }
+    { href: "booking.html", id: "booking", n: "12", label: "Walk through", line: "Canberra school holidays, and weekends after 1:00 pm." }
   ],
 
   booking: {
     phoneDisplay: "0423 336 331",
     phoneTel: "+61423336331",
-    email: "v2@live.com.au"
+    email: "v2@live.com.au",
+    slots: [
+      ["13:00", "1:00–2:00 pm"],
+      ["14:00", "2:00–3:00 pm"],
+      ["15:00", "3:00–4:00 pm"],
+      ["16:00", "4:00–5:00 pm"],
+      ["17:00", "5:00–6:00 pm"]
+    ],
+    // ACT public school holidays. Teacher start days are not included.
+    // Term dates: ACT Government, public school terms 2026–28 (act.gov.au).
+    holidays: [
+      ["2026-04-03", "2026-04-19"],
+      ["2026-07-04", "2026-07-19"],
+      ["2026-09-26", "2026-10-11"],
+      ["2026-12-19", "2027-01-28"],
+      ["2027-04-10", "2027-04-26"],
+      ["2027-07-03", "2027-07-18"],
+      ["2027-09-25", "2027-10-10"],
+      ["2027-12-18", "2028-02-06"]
+    ]
   },
 
   objectives: [

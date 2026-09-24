@@ -25,7 +25,7 @@ No invented duty tables or dollar savings.
 9. Action checklist — including the team group  
 10. Glossary and timeline  
 11. The team — legal and financial roles, order of engagement, further reading  
-12. Booking a walk through — phone 0423 336 331 or v2@live.com.au. No form.  
+12. Booking a walk through — Canberra school holidays and weekends, 1:00 pm–6:00 pm. Contact appears after a time is chosen.  
 
 Australia only. No LLCs, S-corps, FEIE, 1031, Augusta rule, or Delaware vehicles.
 

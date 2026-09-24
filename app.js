@@ -677,30 +677,137 @@
   function renderBooking(root) {
     var book = D.booking;
     root.appendChild(el("p", { class: "lede" }, [
-      "A walk through is a conversation about these rooms. It is not advice, and it does not replace a registered tax agent or a solicitor."
+      "Open hours are 1:00 pm to 6:00 pm, Canberra time, on Saturday, Sunday, and ACT public school holidays. Other times are closed. Choosing a time does not hold it."
     ]));
-    root.appendChild(el("ol", { class: "links" }, [
-      el("li", null, ["Say which room you have been reading."]),
-      el("li", null, ["If the question is about land or duty, name the state or territory. The rules differ."]),
-      el("li", null, ["Phone or email. This page stores nothing. There is no form and no account."])
+    var monthLabel = el("p", { class: "cal-label" }, [""]);
+    var grid = el("div", { class: "cal-grid", role: "grid" });
+    var slots = el("div", { class: "slot-row" });
+    var reveal = el("div", { class: "contact-reveal", hidden: "hidden" });
+    var cursor = startOfMonth(new Date());
+    var today = startOfDay(new Date());
+    var pickedDay = null;
+
+    function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+    function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1); }
+    function iso(d) {
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    }
+    function parseISO(value) {
+      var p = value.split("-");
+      return new Date(+p[0], +p[1] - 1, +p[2]);
+    }
+    function inHoliday(d) {
+      var t = startOfDay(d).getTime();
+      return book.holidays.some(function (range) {
+        return t >= parseISO(range[0]).getTime() && t <= parseISO(range[1]).getTime();
+      });
+    }
+    function isOpenDay(d) {
+      var day = startOfDay(d);
+      if (day.getTime() < today.getTime()) return false;
+      var last = parseISO(book.holidays[book.holidays.length - 1][1]);
+      if (day.getTime() > last.getTime()) return false;
+      var dow = day.getDay();
+      return dow === 0 || dow === 6 || inHoliday(day);
+    }
+
+    function showContact(day, slotLabel) {
+      reveal.hidden = false;
+      reveal.innerHTML = "";
+      var when = day.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+      reveal.appendChild(p(when + ", " + slotLabel + ". This page does not hold the time."));
+      reveal.appendChild(el("p", { class: "contact-line" }, [
+        "Email: ",
+        el("a", { href: "mailto:" + book.email + "?subject=Doug%27s%20Lab%20walk%20through" }, [book.email])
+      ]));
+      reveal.appendChild(el("p", { class: "contact-line" }, [
+        "Phone# ",
+        el("a", { href: "tel:" + book.phoneTel }, [book.phoneDisplay])
+      ]));
+    }
+
+    function drawSlots() {
+      slots.innerHTML = "";
+      reveal.hidden = true;
+      reveal.innerHTML = "";
+      if (!pickedDay) {
+        slots.appendChild(p("Choose an open day. Closed days stay blank."));
+        return;
+      }
+      slots.appendChild(el("p", { class: "label" }, ["1:00 pm to 6:00 pm"]));
+      book.slots.forEach(function (slot) {
+        var btn = el("button", { type: "button", class: "slot" }, [slot[1]]);
+        btn.addEventListener("click", function () {
+          slots.querySelectorAll(".slot").forEach(function (node) { node.setAttribute("aria-pressed", "false"); });
+          btn.setAttribute("aria-pressed", "true");
+          showContact(pickedDay, slot[1]);
+        });
+        slots.appendChild(btn);
+      });
+    }
+
+    function draw() {
+      var name = cursor.toLocaleDateString("en-AU", { month: "long", year: "numeric" });
+      monthLabel.textContent = name;
+      grid.innerHTML = "";
+      ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].forEach(function (label) {
+        grid.appendChild(el("span", { class: "cal-dow" }, [label]));
+      });
+      var first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
+      var lead = (first.getDay() + 6) % 7;
+      var i;
+      for (i = 0; i < lead; i += 1) grid.appendChild(el("span", { class: "cal-empty" }, [""]));
+      var days = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 0).getDate();
+      for (i = 1; i <= days; i += 1) {
+        (function (n) {
+          var date = new Date(cursor.getFullYear(), cursor.getMonth(), n);
+          var open = isOpenDay(date);
+          var btn = el("button", {
+            type: "button",
+            class: open ? "cal-day is-open" : "cal-day",
+            disabled: open ? null : "disabled",
+            "aria-pressed": "false",
+            "aria-label": date.toLocaleDateString("en-AU", { weekday: "long", day: "numeric", month: "long" }) + (open ? ", open" : ", closed")
+          }, [String(n)]);
+          if (open) {
+            btn.addEventListener("click", function () {
+              pickedDay = date;
+              grid.querySelectorAll(".cal-day").forEach(function (node) { node.setAttribute("aria-pressed", "false"); });
+              btn.setAttribute("aria-pressed", "true");
+              drawSlots();
+            });
+          }
+          grid.appendChild(btn);
+        })(i);
+      }
+      if (!pickedDay || pickedDay.getMonth() !== cursor.getMonth() || pickedDay.getFullYear() !== cursor.getFullYear()) {
+        pickedDay = null;
+        drawSlots();
+      }
+    }
+
+    var prev = el("button", { type: "button", class: "ghost" }, ["Previous"]);
+    var next = el("button", { type: "button", class: "ghost" }, ["Next"]);
+    prev.addEventListener("click", function () {
+      cursor = new Date(cursor.getFullYear(), cursor.getMonth() - 1, 1);
+      pickedDay = null;
+      draw();
+    });
+    next.addEventListener("click", function () {
+      cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+      pickedDay = null;
+      draw();
+    });
+    root.appendChild(el("div", { class: "cal" }, [
+      el("div", { class: "cal-nav" }, [prev, monthLabel, next]),
+      grid,
+      slots,
+      reveal
     ]));
-    root.appendChild(el("h2", { id: "contact" }, ["Contact"]));
-    root.appendChild(p("Doug's Lab. Use either line. Neither one is a retainer."));
-    var grid = el("div", { class: "contact-grid" });
-    grid.appendChild(el("a", { class: "contact-card", href: "tel:" + book.phoneTel }, [
-      el("span", { class: "label" }, ["Phone"]),
-      el("span", { class: "contact-name" }, ["Doug's Lab"]),
-      el("span", { class: "mono" }, [book.phoneDisplay])
-    ]));
-    grid.appendChild(el("a", { class: "contact-card", href: "mailto:" + book.email + "?subject=Doug%27s%20Lab%20walk%20through" }, [
-      el("span", { class: "label" }, ["Email"]),
-      el("span", { class: "contact-name" }, ["Doug's Lab"]),
-      el("span", { class: "mono" }, [book.email])
-    ]));
-    root.appendChild(grid);
     root.appendChild(el("p", { class: "note" }, [
-      "Do not send identity documents or trust deeds until you have agreed how they should travel. A locked charity or a community land trust is still not a family discretionary trust."
+      "School holidays follow ACT public school term dates. A teacher start day is closed. Private schools can differ. The contact lines appear only after a time is selected."
     ]));
+    draw();
   }
 
   var renderers = {
