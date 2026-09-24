@@ -42,6 +42,8 @@ Account expected: the Cloudflare login tied to this project (v2@live.com.au / th
 2. Framework: None. Build command: empty. Output directory: `/`.
 3. Attach custom domain `coeconomics.com` once DNS is on Cloudflare.
 
+Pretty URLs are on. Room files stay `succession.html`, but the live address is `/succession`. Do not put a `_redirects` rule from `/succession` back to `/succession.html`. That loops.
+
 GitHub Pages alternative: enable Pages from `main`, root `/`.
 
 ## Local
