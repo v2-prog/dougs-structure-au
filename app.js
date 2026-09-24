@@ -164,11 +164,12 @@
         extra: links
       }));
     });
-    root.appendChild(el("h2", null, ["All eleven rooms"]));
-    root.appendChild(el("ol", { class: "links" }, D.rooms.map(function (room) {
+    root.appendChild(el("h2", null, ["All twelve rooms"]));
+    root.appendChild(el("ol", { class: "links room-index" }, D.rooms.map(function (room) {
       return el("li", null, [
+        el("span", { class: "idx" }, [room.n]),
         el("a", { href: room.href }, [room.label]),
-        el("span", null, [" — " + room.line])
+        el("span", { class: "room-line" }, [room.line])
       ]);
     })));
   }
@@ -673,6 +674,35 @@
     })));
   }
 
+  function renderBooking(root) {
+    var book = D.booking;
+    root.appendChild(el("p", { class: "lede" }, [
+      "A walk through is a conversation about these rooms. It is not advice, and it does not replace a registered tax agent or a solicitor."
+    ]));
+    root.appendChild(el("ol", { class: "links" }, [
+      el("li", null, ["Say which room you have been reading."]),
+      el("li", null, ["If the question is about land or duty, name the state or territory. The rules differ."]),
+      el("li", null, ["Phone or email. This page stores nothing. There is no form and no account."])
+    ]));
+    root.appendChild(el("h2", { id: "contact" }, ["Contact"]));
+    root.appendChild(p("Doug's Lab. Use either line. Neither one is a retainer."));
+    var grid = el("div", { class: "contact-grid" });
+    grid.appendChild(el("a", { class: "contact-card", href: "tel:" + book.phoneTel }, [
+      el("span", { class: "label" }, ["Phone"]),
+      el("span", { class: "contact-name" }, ["Doug's Lab"]),
+      el("span", { class: "mono" }, [book.phoneDisplay])
+    ]));
+    grid.appendChild(el("a", { class: "contact-card", href: "mailto:" + book.email + "?subject=Doug%27s%20Lab%20walk%20through" }, [
+      el("span", { class: "label" }, ["Email"]),
+      el("span", { class: "contact-name" }, ["Doug's Lab"]),
+      el("span", { class: "mono" }, [book.email])
+    ]));
+    root.appendChild(grid);
+    root.appendChild(el("p", { class: "note" }, [
+      "Do not send identity documents or trust deeds until you have agreed how they should travel. A locked charity or a community land trust is still not a family discretionary trust."
+    ]));
+  }
+
   var renderers = {
     home: renderHome,
     profile: renderProfile,
@@ -684,7 +714,8 @@
     compare: renderCompare,
     checklist: renderChecklist,
     glossary: renderGlossary,
-    team: renderTeam
+    team: renderTeam,
+    booking: renderBooking
   };
 
   document.addEventListener("DOMContentLoaded", function () {

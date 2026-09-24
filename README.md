@@ -6,10 +6,11 @@ Family, land & purpose structures — Australia only.
 **Domain reference:** [coeconomics.com](https://coeconomics.com)  
 **Workshop voice:** quiet field notebook, not a store.
 
-A static eleven-room explainer for Australian households and purpose-driven groups.
+A static twelve-room explainer for Australian households and purpose-driven groups.
 
-Not a store, not a blog, not a booking site, and not a US nature-credits company.  
-No accounts. No lead-capture. No invented duty tables or dollar savings.
+Not a store and not a US nature-credits company.  
+No accounts. No lead-capture form. The walk-through room is a phone and email link only.  
+No invented duty tables or dollar savings.
 
 ## Rooms
 
@@ -24,6 +25,7 @@ No accounts. No lead-capture. No invented duty tables or dollar savings.
 9. Action checklist — including the team group  
 10. Glossary and timeline  
 11. The team — legal and financial roles, order of engagement, further reading  
+12. Booking a walk through — phone 0423 336 331 or v2@live.com.au. No form.  
 
 Australia only. No LLCs, S-corps, FEIE, 1031, Augusta rule, or Delaware vehicles.
 

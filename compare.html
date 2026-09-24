@@ -13,7 +13,7 @@
 <body data-room="compare" class="room-compare">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Doug's Lab, home">
       <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
         <path d="M10 48h44" fill="none" stroke="currentColor" stroke-width="2"/>
         <path d="M32 12c8 8 14 16 14 24a14 14 0 1 1-28 0c0-8 6-16 14-24z" fill="currentColor"/>
@@ -25,7 +25,13 @@
         <p class="brand-sub mono">coeconomics.com</p>
       </span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Rooms</button>
+    <div class="header-tools">
+      <a class="book-btn" href="booking.html">
+        <span class="book-kicker">Walk through</span>
+        <span>Doug's Lab</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Rooms</button>
+    </div>
     <nav id="site-nav" aria-label="Rooms" hidden>
       <ol>
           <li><a href="index.html"><span class="idx">01</span> Home</a></li>
@@ -39,6 +45,7 @@
           <li><a href="checklist.html"><span class="idx">09</span> Checklist</a></li>
           <li><a href="glossary.html"><span class="idx">10</span> Glossary</a></li>
           <li><a href="team.html"><span class="idx">11</span> The team</a></li>
+          <li><a href="booking.html"><span class="idx">12</span> Walk through</a></li>
       </ol>
     </nav>
   </header>

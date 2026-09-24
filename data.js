@@ -23,8 +23,15 @@ window.DOUGS_LAB = {
     { href: "compare.html", id: "compare", n: "08", label: "Compare", line: "Control, lock, tax character and succession columns." },
     { href: "checklist.html", id: "checklist", n: "09", label: "Action checklist", line: "Ticks stay on this browser." },
     { href: "glossary.html", id: "glossary", n: "10", label: "Glossary and timeline", line: "Terms, then advice, documents, lodgement, land." },
-    { href: "team.html", id: "team", n: "11", label: "The team", line: "Who does what, and in what order." }
+    { href: "team.html", id: "team", n: "11", label: "The team", line: "Who does what, and in what order." },
+    { href: "booking.html", id: "booking", n: "12", label: "Walk through", line: "Book a conversation. Phone or email. No form." }
   ],
+
+  booking: {
+    phoneDisplay: "0423 336 331",
+    phoneTel: "+61423336331",
+    email: "v2@live.com.au"
+  },
 
   objectives: [
     {
