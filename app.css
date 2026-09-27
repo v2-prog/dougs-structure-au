@@ -250,6 +250,10 @@ a:hover { color: var(--ink); }
 
 .disclaimer-banner {
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
   padding: 0.7rem max(var(--space), env(safe-area-inset-right)) 0.7rem max(var(--space), env(safe-area-inset-left));
   background: var(--forest);
   color: var(--paper);
@@ -257,6 +261,25 @@ a:hover { color: var(--ink); }
   font-size: 0.82rem;
   line-height: 1.4;
 }
+
+.rights {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.rights .mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+}
+
+.disclaimer-banner .rights .mark { color: var(--paper); }
+.disclaimer-banner .rights .vein { stroke: var(--forest); }
+.site-footer .rights .mark { color: var(--forest); }
+.site-footer .rights .vein { stroke: var(--paper); }
 
 main {
   flex: 1 0 auto;
@@ -643,7 +666,7 @@ button.ghost:hover, a.ghost:hover { background: var(--forest); color: var(--pape
 
 .route-box { margin-top: 0.5rem; }
 
-select, input[type="search"] {
+select, input[type="search"], input[type="text"], input[type="password"] {
   font-family: var(--sans);
   font-size: 1rem;
   min-height: 44px;
@@ -775,9 +798,25 @@ thead th:first-child {
 
 .site-footer p {
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
   font-family: var(--sans);
   font-size: 0.75rem;
   line-height: 1.35;
+}
+
+.gate {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 22rem;
+  margin-top: 0.5rem;
+}
+
+.gate label {
+  font-family: var(--sans);
+  font-size: 0.85rem;
 }
 
 .reading li { margin: 0.7rem 0; }
@@ -795,6 +834,15 @@ thead th:first-child {
 @media (min-width: 960px) {
   .nav-toggle { display: none; }
   .site-header { grid-template-columns: 1fr; }
+  main {
+    width: min(100% - 2rem, calc(var(--measure) + 5rem));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .site-header {
+    padding-left: max(var(--space), calc((100% - min(100% - 2rem, var(--measure) + 5rem)) / 2));
+    padding-right: max(var(--space), calc((100% - min(100% - 2rem, var(--measure) + 5rem)) / 2));
+  }
   #site-nav[hidden] { display: block; }
   #site-nav { min-width: 0; }
   #site-nav ol {

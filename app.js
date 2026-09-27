@@ -832,12 +832,67 @@
     booking: renderBooking
   };
 
+  var GATE_KEY = "dougslab:gate";
+  var GATED = {
+    succession: true,
+    explorer: true,
+    workshop: true,
+    studio: true,
+    village: true,
+    compare: true,
+    checklist: true
+  };
+
+  function gateOpen() {
+    try { return sessionStorage.getItem(GATE_KEY) === "1"; }
+    catch (err) { return false; }
+  }
+
+  function renderGate(root, room) {
+    root.appendChild(el("p", { class: "lede" }, [
+      "This section asks for a login phrase and a password. They stay in this browser for the visit. Nothing is sent."
+    ]));
+    var phrase = el("input", { id: "gate-phrase", type: "text", autocomplete: "username" });
+    var pass = el("input", { id: "gate-pass", type: "password", autocomplete: "current-password" });
+    var status = el("p", { class: "status", role: "status" });
+    var button = el("button", { type: "button" }, ["Open the section"]);
+    function tryOpen() {
+      if (phrase.value.trim() === "Eco" && pass.value === "Village") {
+        try { sessionStorage.setItem(GATE_KEY, "1"); } catch (err) {}
+        while (root.firstChild) root.removeChild(root.firstChild);
+        renderers[room](root);
+        openHash();
+        return;
+      }
+      status.textContent = "That phrase or password does not match.";
+    }
+    button.addEventListener("click", tryOpen);
+    pass.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") tryOpen();
+    });
+    phrase.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") tryOpen();
+    });
+    root.appendChild(el("div", { class: "gate" }, [
+      el("label", { for: "gate-phrase" }, ["Login phrase"]),
+      phrase,
+      el("label", { for: "gate-pass" }, ["Password"]),
+      pass,
+      button,
+      status
+    ]));
+    phrase.focus();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     if (!D) return;
     setupNav();
     var room = document.body.getAttribute("data-room");
     var root = document.getElementById("room");
-    if (root && renderers[room]) renderers[room](root);
+    if (root && renderers[room]) {
+      if (GATED[room] && !gateOpen()) renderGate(root, room);
+      else renderers[room](root);
+    }
     openHash();
     window.addEventListener("hashchange", openHash);
   });
