@@ -860,9 +860,36 @@ thead th:first-child {
 }
 
 @media (min-width: 1100px) {
+  :root { --stage: min(calc(100vw - 3rem), calc(100svh * 17 / 9)); }
+  main {
+    width: min(100% - 2rem, var(--stage));
+    max-width: none;
+  }
+  .site-header {
+    padding-left: max(var(--space), calc((100vw - min(100vw - 2rem, var(--stage))) / 2));
+    padding-right: max(var(--space), calc((100vw - min(100vw - 2rem, var(--stage))) / 2));
+  }
+  #room p,
+  #room .lede,
+  main > h1,
+  .agency-links .note {
+    max-width: 42rem;
+  }
   .room-index { grid-template-columns: 1fr 1fr 1fr; }
-  .agency-links ul { grid-template-columns: 1fr 1fr 1fr; }
-  body.room-compare main { max-width: 88rem; }
+  .agency-links ul {
+    grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+    gap: 0.75rem;
+  }
+  .agency-links a {
+    display: flex;
+    align-items: flex-end;
+    aspect-ratio: 17 / 9;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--rule);
+    background: transparent;
+    overflow-wrap: anywhere;
+  }
+  body.room-compare main { max-width: none; }
   .compare-layout {
     display: grid;
     grid-template-columns: minmax(16rem, 18rem) minmax(0, 1fr);
@@ -891,6 +918,7 @@ thead th:first-child {
   }
   .skip-link, .nav-toggle, #site-nav { display: none !important; }
   .site-footer { position: static; border-top: 1px solid black; margin-top: 1.5rem; }
+  .agency-links a { aspect-ratio: auto; display: inline; border: 0; padding: 0; }
   .disclaimer-banner, .tag, .flag { background: white !important; color: black !important; }
   .card, .card > * { display: block !important; }
   .hint { display: none !important; }
