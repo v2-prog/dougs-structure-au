@@ -1,0 +1,30 @@
+/* Accessible, high-contrast styles for Youth Finance Hub */
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.room-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #065f46; }
+.prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+.prose p { margin-bottom: 0.75rem; line-height: 1.6; }
+.prose ul, .prose ol { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+.prose li { margin-bottom: 0.25rem; }
+.prose a { color: #047857; text-decoration: underline; }
+.prose a:hover { color: #065f46; }
+
+.quiz-option { cursor: pointer; }
+.quiz-option:hover { background-color: #ecfdf5; }
+.quiz-correct { background-color: #d1fae5 !important; border-color: #059669 !important; }
+.quiz-incorrect { background-color: #fee2e2 !important; border-color: #dc2626 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
