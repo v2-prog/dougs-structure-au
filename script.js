@@ -1,6 +1,7 @@
 // Youth Finance Hub – client-side logic
 // Progress stored in localStorage. No sensitive data collected.
 // Updated: Enter the 12 Learning Rooms now links to dedicated room pages.
+// Cache-bust: 2026-10-11
 
 let currentView = 'home';
 let completed = JSON.parse(localStorage.getItem('yfh-completed') || '[]');
@@ -30,7 +31,10 @@ function showView(view, roomId = null) {
     window.location.href = 'rooms.html';
     return;
   }
-  else if (view === 'room' && roomId) renderRoom(app, roomId);
+  else if (view === 'room' && roomId) {
+    window.location.href = `room${roomId}.html`;
+    return;
+  }
   else if (view === 'glossary') renderGlossary(app);
   else if (view === 'support') renderSupport(app);
   else if (view === 'progress') renderProgress(app);
@@ -81,14 +85,6 @@ function renderHome(container) {
       <p class="text-sm text-stone-600 mt-6">This is a prototype. All factual claims should be verified against current official sources before use in formal education. Content review date: October 2026.</p>
     </section>
   `;
-}
-
-function renderRoomsList(container) {
-  window.location.href = 'rooms.html';
-}
-
-function renderRoom(container, id) {
-  window.location.href = `room${id}.html`;
 }
 
 function renderGlossary(container) {
