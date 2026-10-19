@@ -3,75 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Life Stages | Bracket</title>
+  <title>Bracket — Economic Life Stages</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg: #0f1f14; --gold: #c5a46e; --cream: #f5f0e6; }
-    body { background: var(--bg); color: var(--cream); font-family: 'Newsreader', serif; }
-    .card { background: #1a2e1a; border: 1px solid #2a4030; transition: border-color 0.2s; }
-    .card:hover { border-color: var(--gold); }
-    .icon { color: var(--gold); font-size: 2.25rem; }
+    :root { --bg: #0f1f14; --panel: #1a2e1a; --fg: #f5f0e6; --gold: #c5a46e; --line: #2a4030; }
+    body { background: var(--bg); color: var(--fg); font-family: system-ui, sans-serif; }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+    summary { padding: 12px; cursor: pointer; background: linear-gradient(180deg, #1a2e1a, #152418); list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    .chev { display: inline-block; width: 8px; height: 8px; border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(45deg); }
+    details[open] .chev { transform: rotate(225deg); }
   </style>
 </head>
-<body>
-  <header class="py-6 px-4 border-b border-[#2a4030]">
-    <div class="max-w-5xl mx-auto">
-      <a href="/" class="text-[#c5a46e] text-sm">← Bracket</a>
-      <h1 class="text-3xl md:text-4xl mt-1">Life Stages</h1>
-      <p class="text-[#c5a46e] text-sm">Two years at a time · Choose the band that matches where you are</p>
-    </div>
-  </header>
-
-  <main class="max-w-5xl mx-auto px-4 py-10">
-    <p class="text-center opacity-80 mb-8 max-w-xl mx-auto">Each band includes scenarios, living arrangements, wealth-level tables, and Structure Lab tools. Start with the ages that fit your current stage.</p>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <a href="bands/12-13.md" class="card p-5 rounded-xl block">
-        <div class="icon">🌱</div>
-        <h2 class="text-lg mt-2">12–13</h2>
-        <p class="text-xs opacity-70">Foundations & literacy</p>
-        <p class="text-xs mt-2 text-[#c5a46e]">Early habits, school, first accounts</p>
-      </a>
-      <a href="bands/50-51.md" class="card p-5 rounded-xl block">
-        <div class="icon">⛰️</div>
-        <h2 class="text-lg mt-2">50–51</h2>
-        <p class="text-xs opacity-70">Peak accumulation</p>
-        <p class="text-xs mt-2 text-[#c5a46e]">Maximise super, family transition</p>
-      </a>
-      <a href="bands/66-67.md" class="card p-5 rounded-xl block">
-        <div class="icon">⏱️</div>
-        <h2 class="text-lg mt-2">66–67</h2>
-        <p class="text-xs opacity-70">Retirement & Age Pension</p>
-        <p class="text-xs mt-2 text-[#c5a46e]">Drawdown, means test, succession</p>
-      </a>
-      <div class="card p-5 rounded-xl border-dashed opacity-70 text-center">
-        <div class="icon">🔒</div>
-        <p class="text-sm mt-2">More bands arriving</p>
-        <p class="text-xs opacity-60">Full set of 2-year pathways loading</p>
+<body class="p-4 md:p-8">
+  <div class="max-w-6xl mx-auto">
+    <header class="flex flex-wrap justify-between items-end gap-4 mb-8">
+      <div>
+        <a href="/" class="text-[#c5a46e] text-sm">← Bracket</a>
+        <h1 class="text-3xl md:text-4xl font-bold mt-1">Economic Life Stages</h1>
+        <p class="text-[#c5a46e] mt-1 max-w-xl">Two years at a time. Open a card for the key changes, then go deeper for scenarios, government links, forms and tools.</p>
       </div>
-    </div>
-
-    <section class="mt-14">
-      <h3 class="text-xl mb-4">Suggested pathways</h3>
-      <div class="grid md:grid-cols-2 gap-4 text-sm">
-        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
-          <strong>Family of five</strong> — dual income, property, succession. See 40–51 bands.
-        </div>
-        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
-          <strong>Property + SMSF</strong> — debt recycling, self-managed super. See 40–60 bands.
-        </div>
-        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
-          <strong>Eco-village / cooperative</strong> — land, governance, community structures. See Structure Lab rooms.
-        </div>
-        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
-          <strong>Modest to comfortable</strong> — ASFA-aligned outcomes. Wealth tables in every band.
-        </div>
+      <div class="space-x-2">
+        <button id="open-all" class="bg-[#c5a46e] text-[#0f1f14] px-4 py-2 rounded font-medium">Open all</button>
+        <button id="close-all" class="border border-[#c5a46e] text-[#c5a46e] px-4 py-2 rounded font-medium">Close all</button>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="text-center text-xs opacity-50 py-8 border-t border-[#2a4030]">
-    Educational only · Verify official sources · Bracket · coeconomics.com
-  </footer>
+    <div id="rows" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <footer class="mt-12 text-sm text-[#c5a46e]/80">
+      Averages for Australia. Age 60 preservation (born after 1 July 1964), Age Pension age 67. Educational only — not personal advice.
+    </footer>
+  </div>
+
+  <script>
+    const bands = [
+      ["12-13", "🌱", "Foundations, pocket money, first habits"],
+      ["14-15", "📱", "Casual jobs, phone, early saving"],
+      ["16-17", "🚗", "Learner licence, TFN, bank account"],
+      ["18-19", "🎓", "Voting, study, HELP, first work"],
+      ["50-51", "⛰️", "Peak accumulation, family, super top-ups"],
+      ["66-67", "⏱️", "Age Pension, drawdown, succession"]
+    ];
+    const root = document.getElementById("rows");
+    bands.forEach(([age, icon, desc]) => {
+      root.insertAdjacentHTML("beforeend", `
+        <details class="bg-[#1a2e1a] border border-[#2a4030] rounded-lg overflow-hidden">
+          <summary class="p-4 cursor-pointer">
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-lg">${age}</span>
+              <span class="chev"></span>
+            </div>
+            <div class="text-2xl mt-1">${icon}</div>
+          </summary>
+          <div class="p-4 pt-0 text-sm">
+            <p>${desc}</p>
+            <a href="/planner/bands/${age}.md" class="inline-block mt-3 text-[#c5a46e] hover:underline">Open full room →</a>
+          </div>
+        </details>
+      `);
+    });
+    document.getElementById("open-all").onclick = () => document.querySelectorAll("details").forEach(d => d.open = true);
+    document.getElementById("close-all").onclick = () => document.querySelectorAll("details").forEach(d => d.open = false);
+  </script>
 </body>
 </html>
