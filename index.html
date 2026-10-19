@@ -3,55 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australian Youth Financial Literacy & Economic Empowerment Hub</title>
+  <title>Bracket — Two Years at a Time | Australian Life Stages</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="Interactive financial literacy learning hub for young Australians aged 15-34. Covers personal finance, tax, super, housing, cooperatives, and community wealth-building.">
+  <meta name="description" content="Bracket: Australian life-stage financial planner. Two-year bands from 12 to 70 with pathways for super, housing, family, and community structures.">
+  <style>
+    :root { --bg: #0f1f14; --gold: #c5a46e; --cream: #f5f0e6; --card: #1a2e1a; }
+    body { background: var(--bg); color: var(--cream); }
+  </style>
 </head>
-<body class="bg-stone-50 text-stone-900 font-sans">
-  <!-- Educational Disclaimer Banner -->
-  <div class="bg-amber-100 border-b border-amber-300 px-4 py-2 text-sm text-amber-900 text-center">
-    <strong>Educational only.</strong> This platform provides general financial education based on Australian sources. It is not personalised financial, tax, legal or investment advice. Rules change — always check official sources. Last content review framework: October 2026.
+<body class="font-serif">
+  <!-- Disclaimer -->
+  <div class="bg-amber-900/40 border-b border-amber-800/50 px-4 py-2 text-xs text-amber-100 text-center">
+    <strong>Educational only.</strong> General information. Not personalised advice. Verify official Australian sources.
   </div>
 
-  <header class="bg-emerald-800 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <h1 class="text-2xl md:text-3xl font-bold">Youth Finance Hub</h1>
-        <p class="text-emerald-100 text-sm">Australian Financial Literacy & Economic Empowerment</p>
-      </div>
-      <nav class="flex flex-wrap gap-2 justify-center">
-        <button onclick="showView('home')" class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-sm">Home</button>
-        <button onclick="showView('rooms')" class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-sm">12 Rooms</button>
-        <button onclick="showView('glossary')" class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-sm">Glossary</button>
-        <button onclick="showView('support')" class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-sm">Support</button>
-        <button onclick="showView('progress')" class="px-3 py-1 rounded bg-emerald-700 hover:bg-emerald-600 text-sm">My Progress</button>
+  <header class="border-b border-[#2a4030]">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <a href="/" class="flex items-center gap-3">
+        <span class="text-2xl text-[#c5a46e]">[ ]</span>
+        <div>
+          <div class="text-xl font-bold tracking-tight">Bracket</div>
+          <div class="text-xs text-[#c5a46e]">Two years at a time</div>
+        </div>
+      </a>
+      <nav class="flex flex-wrap gap-3 text-sm">
+        <a href="/" class="text-[#c5a46e] hover:text-white">Home</a>
+        <a href="/planner/" class="text-[#c5a46e] hover:text-white">Life Stages</a>
+        <a href="#pathways" class="text-[#c5a46e] hover:text-white">Pathways</a>
+        <a href="#rooms" class="text-[#c5a46e] hover:text-white">Rooms</a>
       </nav>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 pb-2">
-      <div class="w-full bg-emerald-900 rounded-full h-2">
-        <div id="progress-bar" class="bg-amber-400 h-2 rounded-full transition-all" style="width: 0%"></div>
-      </div>
-      <p id="progress-text" class="text-xs text-emerald-100 mt-1 text-center">0 of 12 rooms completed</p>
     </div>
   </header>
 
-  <main id="app" class="max-w-7xl mx-auto px-4 py-6 min-h-screen">
-    <!-- Content injected by JS -->
-    <div class="text-center py-20">
-      <p class="text-lg">Loading the Youth Finance Hub...</p>
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
+    <div class="text-[#c5a46e] text-sm tracking-widest uppercase mb-4">Australian Life Stages</div>
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+      Navigate life<br>
+      <span class="text-[#c5a46e]">two years at a time.</span>
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-10">
+      Clear pathways for super, housing, family, and community structures from age 12 to 70. Built for Australian rules and real living arrangements.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/planner/" class="bg-[#c5a46e] text-[#0f1f14] px-8 py-3 rounded-lg font-medium hover:bg-[#d4b57a] transition">Explore Life Stages</a>
+      <a href="#pathways" class="border border-[#c5a46e] text-[#c5a46e] px-8 py-3 rounded-lg font-medium hover:bg-[#c5a46e]/10 transition">See Pathways</a>
     </div>
-  </main>
+  </section>
 
-  <footer class="bg-stone-800 text-stone-200 text-sm py-6 mt-12">
-    <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-      <p>Built as an educational prototype for young Australians. Hosted via GitHub / Cloudflare Pages.</p>
-      <p>Primary sources: ASIC Moneysmart, ATO, Services Australia, ACNC, Fair Work, BCCM, National Debt Helpline and others.</p>
-      <p class="text-xs opacity-75">Not affiliated with any government, regulator or financial institution. Content requires periodic professional review. © 2026 Educational Prototype</p>
+  <!-- Pathways -->
+  <section id="pathways" class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-2xl md:text-3xl text-center mb-10">Choose your pathway</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
+        <div class="text-3xl mb-3">📅</div>
+        <h3 class="text-xl mb-2">2-Year Bands</h3>
+        <p class="text-sm opacity-80 mb-4">Focused guidance for every stage with scenarios, wealth tables, and living arrangements.</p>
+        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">Browse bands →</a>
+      </div>
+      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
+        <div class="text-3xl mb-3">🏡</div>
+        <h3 class="text-xl mb-2">Living & Structures</h3>
+        <p class="text-sm opacity-80 mb-4">From urban ownership to eco-villages, cooperatives, and multi-generational households.</p>
+        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">View structures →</a>
+      </div>
+      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
+        <div class="text-3xl mb-3">📊</div>
+        <h3 class="text-xl mb-2">Wealth Pathways</h3>
+        <p class="text-sm opacity-80 mb-4">Modest to comfortable to wealthy outcomes aligned with ASFA standards.</p>
+        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">See outcomes →</a>
+      </div>
     </div>
+  </section>
+
+  <!-- Quick entry -->
+  <section class="max-w-6xl mx-auto px-4 py-12 text-center">
+    <p class="opacity-70 mb-6">Start with the band that matches where you are now.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/planner/bands/12-13.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">12–13</a>
+      <a href="/planner/bands/50-51.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">50–51</a>
+      <a href="/planner/bands/66-67.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">66–67</a>
+      <a href="/planner/" class="px-4 py-2 border border-[#c5a46e] text-[#c5a46e] rounded-full text-sm">All bands</a>
+    </div>
+  </section>
+
+  <footer class="border-t border-[#2a4030] mt-16 py-8 text-center text-xs opacity-60">
+    <p>Bracket · Australian life-stage education · coeconomics.com</p>
+    <p class="mt-1">Educational prototype. Not affiliated with any government or financial institution.</p>
   </footer>
-
-  <script src="content.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
