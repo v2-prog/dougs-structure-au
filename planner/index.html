@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Stages | Bracket</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --bg: #0f1f14; --gold: #c5a46e; --cream: #f5f0e6; }
+    body { background: var(--bg); color: var(--cream); font-family: 'Newsreader', serif; }
+    .card { background: #1a2e1a; border: 1px solid #2a4030; }
+    .card:hover { border-color: var(--gold); }
+    .icon { color: var(--gold); font-size: 2.5rem; }
+  </style>
+</head>
+<body>
+  <header class="py-8 px-4 border-b border-[#2a4030]">
+    <div class="max-w-5xl mx-auto">
+      <a href="/" class="text-[#c5a46e] text-sm">← Bracket</a>
+      <h1 class="text-4xl mt-2 text-[#f5f0e6]">Life Stages</h1>
+      <p class="text-[#c5a46e]">Two years at a time</p>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="bands/12-13.md" class="card p-6 rounded-xl block">
+        <div class="icon">🌱</div>
+        <h2 class="text-xl mt-2">12–13</h2>
+        <p class="text-sm opacity-80">Foundations & literacy</p>
+      </a>
+      <a href="bands/50-51.md" class="card p-6 rounded-xl block">
+        <div class="icon">⛰️</div>
+        <h2 class="text-xl mt-2">50–51</h2>
+        <p class="text-sm opacity-80">Peak accumulation</p>
+      </a>
+      <a href="bands/66-67.md" class="card p-6 rounded-xl block">
+        <div class="icon">⏱️</div>
+        <h2 class="text-xl mt-2">66–67</h2>
+        <p class="text-sm opacity-80">Retirement & Age Pension</p>
+      </a>
+      <div class="card p-6 rounded-xl border-dashed opacity-60">
+        <div class="icon">🔒</div>
+        <p class="text-sm mt-2">More bands loading</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
