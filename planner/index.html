@@ -8,41 +8,70 @@
   <style>
     :root { --bg: #0f1f14; --gold: #c5a46e; --cream: #f5f0e6; }
     body { background: var(--bg); color: var(--cream); font-family: 'Newsreader', serif; }
-    .card { background: #1a2e1a; border: 1px solid #2a4030; }
+    .card { background: #1a2e1a; border: 1px solid #2a4030; transition: border-color 0.2s; }
     .card:hover { border-color: var(--gold); }
-    .icon { color: var(--gold); font-size: 2.5rem; }
+    .icon { color: var(--gold); font-size: 2.25rem; }
   </style>
 </head>
 <body>
-  <header class="py-8 px-4 border-b border-[#2a4030]">
+  <header class="py-6 px-4 border-b border-[#2a4030]">
     <div class="max-w-5xl mx-auto">
       <a href="/" class="text-[#c5a46e] text-sm">← Bracket</a>
-      <h1 class="text-4xl mt-2 text-[#f5f0e6]">Life Stages</h1>
-      <p class="text-[#c5a46e]">Two years at a time</p>
+      <h1 class="text-3xl md:text-4xl mt-1">Life Stages</h1>
+      <p class="text-[#c5a46e] text-sm">Two years at a time · Choose the band that matches where you are</p>
     </div>
   </header>
+
   <main class="max-w-5xl mx-auto px-4 py-10">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="bands/12-13.md" class="card p-6 rounded-xl block">
+    <p class="text-center opacity-80 mb-8 max-w-xl mx-auto">Each band includes scenarios, living arrangements, wealth-level tables, and Structure Lab tools. Start with the ages that fit your current stage.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="bands/12-13.md" class="card p-5 rounded-xl block">
         <div class="icon">🌱</div>
-        <h2 class="text-xl mt-2">12–13</h2>
-        <p class="text-sm opacity-80">Foundations & literacy</p>
+        <h2 class="text-lg mt-2">12–13</h2>
+        <p class="text-xs opacity-70">Foundations & literacy</p>
+        <p class="text-xs mt-2 text-[#c5a46e]">Early habits, school, first accounts</p>
       </a>
-      <a href="bands/50-51.md" class="card p-6 rounded-xl block">
+      <a href="bands/50-51.md" class="card p-5 rounded-xl block">
         <div class="icon">⛰️</div>
-        <h2 class="text-xl mt-2">50–51</h2>
-        <p class="text-sm opacity-80">Peak accumulation</p>
+        <h2 class="text-lg mt-2">50–51</h2>
+        <p class="text-xs opacity-70">Peak accumulation</p>
+        <p class="text-xs mt-2 text-[#c5a46e]">Maximise super, family transition</p>
       </a>
-      <a href="bands/66-67.md" class="card p-6 rounded-xl block">
+      <a href="bands/66-67.md" class="card p-5 rounded-xl block">
         <div class="icon">⏱️</div>
-        <h2 class="text-xl mt-2">66–67</h2>
-        <p class="text-sm opacity-80">Retirement & Age Pension</p>
+        <h2 class="text-lg mt-2">66–67</h2>
+        <p class="text-xs opacity-70">Retirement & Age Pension</p>
+        <p class="text-xs mt-2 text-[#c5a46e]">Drawdown, means test, succession</p>
       </a>
-      <div class="card p-6 rounded-xl border-dashed opacity-60">
+      <div class="card p-5 rounded-xl border-dashed opacity-70 text-center">
         <div class="icon">🔒</div>
-        <p class="text-sm mt-2">More bands loading</p>
+        <p class="text-sm mt-2">More bands arriving</p>
+        <p class="text-xs opacity-60">Full set of 2-year pathways loading</p>
       </div>
     </div>
+
+    <section class="mt-14">
+      <h3 class="text-xl mb-4">Suggested pathways</h3>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
+          <strong>Family of five</strong> — dual income, property, succession. See 40–51 bands.
+        </div>
+        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
+          <strong>Property + SMSF</strong> — debt recycling, self-managed super. See 40–60 bands.
+        </div>
+        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
+          <strong>Eco-village / cooperative</strong> — land, governance, community structures. See Structure Lab rooms.
+        </div>
+        <div class="bg-[#1a2e1a] p-4 rounded-lg border border-[#2a4030]">
+          <strong>Modest to comfortable</strong> — ASFA-aligned outcomes. Wealth tables in every band.
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="text-center text-xs opacity-50 py-8 border-t border-[#2a4030]">
+    Educational only · Verify official sources · Bracket · coeconomics.com
+  </footer>
 </body>
 </html>
