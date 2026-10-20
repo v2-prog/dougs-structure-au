@@ -4,43 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bracket — Economic Life Stages</title>
-  <!-- Updated for graphics confirmation -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
   <style>
     :root {
-      --bg: #0f1f14;
-      --panel: #1a2e1a;
-      --fg: #f5f0e6;
-      --muted: #c5a46e;
-      --line: #2a4030;
-      --focus: #c5a46e;
-      --btn-bg: #c5a46e;
-      --btn-fg: #0f1f14;
+      --bg: #EEF1F0;
+      --panel: #FFFFFF;
+      --fg: #1B2321;
+      --muted: #55625E;
+      --line: #CBD3D0;
+      --btn-bg: #1B2321;
+      --btn-fg: #EEF1F0;
       --font-display: "Bricolage Grotesque", system-ui, sans-serif;
       --font-body: "Figtree", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
     }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.45;
-      padding: 28px 16px 40px;
-      margin: 0;
-    }
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.45; padding: 28px 16px 40px; margin: 0; }
     .wrap { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
     header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
     h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.05; margin: 0 0 6px; }
     header p { margin: 0; color: var(--muted); max-width: 62ch; }
     .ctrl { display: flex; gap: 8px; }
-    .ctrl button {
-      font: 600 0.85rem var(--font-body);
-      background: var(--btn-bg); color: var(--btn-fg);
-      border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer;
-    }
+    .ctrl button { font: 600 0.85rem var(--font-body); background: var(--btn-bg); color: var(--btn-fg); border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; }
     .ctrl button.alt { background: transparent; color: var(--fg); border: 1px solid var(--line); }
     .row { display: flex; flex-direction: column; gap: 10px; }
     .row-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
@@ -52,13 +38,7 @@
     @media (max-width: 720px)  { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 440px)  { .grid { grid-template-columns: minmax(0, 1fr); } }
     details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; min-width: 0; }
-    summary {
-      list-style: none; cursor: pointer;
-      background: var(--c); color: var(--ink);
-      padding: 10px 12px;
-      display: grid; grid-template-columns: 1fr auto; grid-template-areas: "age chev" "icons icons";
-      gap: 8px 8px; align-items: center;
-    }
+    summary { list-style: none; cursor: pointer; background: var(--c); color: var(--ink); padding: 10px 12px; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "age chev" "icons icons"; gap: 8px 8px; align-items: center; }
     summary::-webkit-details-marker { display: none; }
     .age { grid-area: age; font: 700 1.15rem var(--font-mono); letter-spacing: -0.02em; }
     .icons { grid-area: icons; display: flex; gap: 8px; }
@@ -99,7 +79,7 @@
     <header>
       <div>
         <h1>Economic life stages</h1>
-        <p>What typically changes in a person's money at each two-year age band, from 12 to 81. Open a card for the details. Icons link to deeper pages.</p>
+        <p>What typically changes in a person's money at each two-year age band, from 12 to 81. Open a card for the details.</p>
       </div>
       <div class="ctrl">
         <button type="button" id="open-all">Open all</button>
@@ -113,81 +93,83 @@
     </footer>
   </div>
   <script>
-    var ROWS = [
-      { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
-      { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
-      { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
-      { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
-      { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
-      { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
-      { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
-    ];
-    var DATA = [
-      ["bike|First bike or scooter, usually a gift", "coin|Pocket money for chores", "ball|Sporting club fees, gear and hobbies"],
-      ["job|First casual jobs where rules allow: paper round, cafe, retail", "phone|Own phone and plan, usually paid by parents", "coin|Saving for a bigger purchase"],
-      ["car|Learner licence, lessons and supervised driving", "card|First bank account, card and Tax File Number", "job|Casual wages at junior pay rates"],
-      ["vote|Enrolled to vote, adult legal rights", "cap|Leaves school for uni, TAFE or an apprenticeship", "book|Study debt (HECS-HELP) or Youth Allowance begins"],
-      ["car|First car, with insurance and registration costs", "key|Share house rent, or still living at home", "tool|Trade wages, or part-time work beside study"],
-      ["job|Graduate job and first full-time salary", "chart|Super contributions start building", "book|HELP repayments begin once income passes the threshold"],
-      ["plane|Travel and working holidays", "key|Own rental, with rent taking a large share of pay", "chart|First pay rise or job switch"],
-      ["job|Mid-level role with specialised skills", "shield|Health, income and car insurance", "coin|Saving a house deposit"],
-      ["key|Deposit goal, first home buyer schemes", "heart|Partner moves in, costs are shared", "chart|Salary growth continues"],
-      ["home|Typical first home purchase and mortgage", "heart|Weddings and partnered households", "shield|Life insurance and a will"],
-      ["person|First child for many, around age 31", "coin|Parental leave and a dip in household income", "home|Move to a larger home"],
-      ["coin|Childcare costs near their peak, partly offset by subsidy", "job|Return to work, often part-time", "car|Family car upgrade"],
-      ["home|Mortgage at its heaviest, rate changes matter", "person|Second child possible", "chart|Promotion into management"],
-      ["ball|Kids' sport, school and activity costs", "job|Senior role, pay rising", "shield|Insurance and super reviewed"],
-      ["chart|Earnings climbing toward their peak", "home|Renovations or an upgrade", "coin|Extra mortgage repayments"],
-      ["book|School costs rise: devices, excursions, tutoring", "car|Second car or replacement", "heart|Helping ageing parents begins"],
-      ["card|Teenage costs: phones, food, activities", "chart|Higher tax bracket", "plane|Family holidays"],
-      ["job|Leadership roles or own business", "coin|Super top-ups and investing", "cross|Health checks and dental costs rise"],
-      ["chart|Peak earning years begin", "cap|Child at university or TAFE", "home|Mortgage balance shrinking"],
-      ["coin|Peak saving, catch-up super contributions", "key|Kids move out, or come back home", "shield|Insurance and estate reviewed"],
-      ["chart|Highest average income of a career", "home|Mortgage near paid off", "heart|Supporting adult children"],
-      ["car|Car replacement or long trips", "cross|Health costs and private cover", "coin|Retirement planning gets serious"],
-      ["sun|Empty nest, spending changes", "chart|Super balance grows fastest", "plane|Bigger travel budget"],
-      ["home|Downsizing considered", "job|Reduced hours or phased retirement", "shield|Retirement adviser and estate planning"],
-      ["coin|Super accessible after retiring (preservation age 60)", "sun|Many cut back or retire", "cross|Health spending rises"],
-      ["sun|Retirement for many, wages stop", "coin|Super pension or lump sum drawn", "plane|Travel years"],
-      ["sun|Average retirement age is around 64 to 65", "chart|Spending shifts from work to leisure", "shield|Seniors Card and concessions"],
-      ["coin|Age Pension age is 67, part-pension possible", "cross|Medicare and out-of-pocket costs", "home|Home equity is the main asset"],
-      ["coin|Age Pension plus super drawdowns", "cross|Health costs rise", "heart|Grandchildren: gifts and care"],
-      ["coin|Minimum super drawdown rates apply", "home|Maintenance costs, possible downsize", "car|Driving less, licence reviews"],
-      ["cross|Specialist care and medication", "heart|Gifts and help to family", "coin|Pension income steady"],
-      ["home|Home modifications for safety", "cross|Hospital and dental costs", "coin|Careful budgeting on a fixed income"],
-      ["heart|Estate planning, powers of attorney", "cross|Health services used more", "home|Considering retirement living"],
-      ["home|Retirement village or in-home care", "cross|Home care packages", "coin|Aged care means-testing begins"],
-      ["cross|Aged care costs and fees", "heart|Support from family", "shield|Will updated, estate settled"]
-    ];
-    function icon(n) { return '<svg class="i" aria-hidden="true"><use href="#i-' + n + '"/></svg>'; }
-    var root = document.getElementById("rows");
-    for (var r = 0; r < 7; r++) {
-      var row = ROWS[r];
-      var startAge = 12 + r * 10;
-      var html = '<section class="row" style="--c:' + row.c + ';--ink:' + row.ink + '">' +
-        '<div class="row-label"><i class="swatch"></i><b>' + row.name + '</b><span>Ages ' + startAge + ' to ' + (startAge + 9) + '</span></div>' +
-        '<div class="grid">';
-      for (var k = 0; k < 5; k++) {
-        var age = startAge + k * 2;
-        var items = DATA[r * 5 + k];
-        var icons = "", list = "";
-        for (var j = 0; j < items.length; j++) {
-          var p = items[j].split("|");
-          icons += '<a href="/details/' + p[0] + '.html" title="' + p[0] + '">' + icon(p[0]) + '</a>';
-          list += '<li><span class="chip">' + icon(p[0]) + '</span><span>' + p[1] + '</span></li>';
+    document.addEventListener("DOMContentLoaded", function () {
+      var ROWS = [
+        { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
+        { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
+        { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
+        { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
+        { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
+        { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
+        { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
+      ];
+      var DATA = [
+        ["bike|First bike or scooter, usually a gift", "coin|Pocket money for chores", "ball|Sporting club fees, gear and hobbies"],
+        ["job|First casual jobs where rules allow: paper round, cafe, retail", "phone|Own phone and plan, usually paid by parents", "coin|Saving for a bigger purchase"],
+        ["car|Learner licence, lessons and supervised driving", "card|First bank account, card and Tax File Number", "job|Casual wages at junior pay rates"],
+        ["vote|Enrolled to vote, adult legal rights", "cap|Leaves school for uni, TAFE or an apprenticeship", "book|Study debt (HECS-HELP) or Youth Allowance begins"],
+        ["car|First car, with insurance and registration costs", "key|Share house rent, or still living at home", "tool|Trade wages, or part-time work beside study"],
+        ["job|Graduate job and first full-time salary", "chart|Super contributions start building", "book|HELP repayments begin once income passes the threshold"],
+        ["plane|Travel and working holidays", "key|Own rental, with rent taking a large share of pay", "chart|First pay rise or job switch"],
+        ["job|Mid-level role with specialised skills", "shield|Health, income and car insurance", "coin|Saving a house deposit"],
+        ["key|Deposit goal, first home buyer schemes", "heart|Partner moves in, costs are shared", "chart|Salary growth continues"],
+        ["home|Typical first home purchase and mortgage", "heart|Weddings and partnered households", "shield|Life insurance and a will"],
+        ["person|First child for many, around age 31", "coin|Parental leave and a dip in household income", "home|Move to a larger home"],
+        ["coin|Childcare costs near their peak, partly offset by subsidy", "job|Return to work, often part-time", "car|Family car upgrade"],
+        ["home|Mortgage at its heaviest, rate changes matter", "person|Second child possible", "chart|Promotion into management"],
+        ["ball|Kids' sport, school and activity costs", "job|Senior role, pay rising", "shield|Insurance and super reviewed"],
+        ["chart|Earnings climbing toward their peak", "home|Renovations or an upgrade", "coin|Extra mortgage repayments"],
+        ["book|School costs rise: devices, excursions, tutoring", "car|Second car or replacement", "heart|Helping ageing parents begins"],
+        ["card|Teenage costs: phones, food, activities", "chart|Higher tax bracket", "plane|Family holidays"],
+        ["job|Leadership roles or own business", "coin|Super top-ups and investing", "cross|Health checks and dental costs rise"],
+        ["chart|Peak earning years begin", "cap|Child at university or TAFE", "home|Mortgage balance shrinking"],
+        ["coin|Peak saving, catch-up super contributions", "key|Kids move out, or come back home", "shield|Insurance and estate reviewed"],
+        ["chart|Highest average income of a career", "home|Mortgage near paid off", "heart|Supporting adult children"],
+        ["car|Car replacement or long trips", "cross|Health costs and private cover", "coin|Retirement planning gets serious"],
+        ["sun|Empty nest, spending changes", "chart|Super balance grows fastest", "plane|Bigger travel budget"],
+        ["home|Downsizing considered", "job|Reduced hours or phased retirement", "shield|Retirement adviser and estate planning"],
+        ["coin|Super accessible after retiring (preservation age 60)", "sun|Many cut back or retire", "cross|Health spending rises"],
+        ["sun|Retirement for many, wages stop", "coin|Super pension or lump sum drawn", "plane|Travel years"],
+        ["sun|Average retirement age is around 64 to 65", "chart|Spending shifts from work to leisure", "shield|Seniors Card and concessions"],
+        ["coin|Age Pension age is 67, part-pension possible", "cross|Medicare and out-of-pocket costs", "home|Home equity is the main asset"],
+        ["coin|Age Pension plus super drawdowns", "cross|Health costs rise", "heart|Grandchildren: gifts and care"],
+        ["coin|Minimum super drawdown rates apply", "home|Maintenance costs, possible downsize", "car|Driving less, licence reviews"],
+        ["cross|Specialist care and medication", "heart|Gifts and help to family", "coin|Pension income steady"],
+        ["home|Home modifications for safety", "cross|Hospital and dental costs", "coin|Careful budgeting on a fixed income"],
+        ["heart|Estate planning, powers of attorney", "cross|Health services used more", "home|Considering retirement living"],
+        ["home|Retirement village or in-home care", "cross|Home care packages", "coin|Aged care means-testing begins"],
+        ["cross|Aged care costs and fees", "heart|Support from family", "shield|Will updated, estate settled"]
+      ];
+      function icon(n) { return '<svg class="i" aria-hidden="true"><use href="#i-' + n + '"/></svg>'; }
+      var root = document.getElementById("rows");
+      for (var r = 0; r < 7; r++) {
+        var row = ROWS[r];
+        var startAge = 12 + r * 10;
+        var html = '<section class="row" style="--c:' + row.c + ';--ink:' + row.ink + '">' +
+          '<div class="row-label"><i class="swatch"></i><b>' + row.name + '</b><span>Ages ' + startAge + ' to ' + (startAge + 9) + '</span></div>' +
+          '<div class="grid">';
+        for (var k = 0; k < 5; k++) {
+          var age = startAge + k * 2;
+          var items = DATA[r * 5 + k];
+          var icons = "", list = "";
+          for (var j = 0; j < items.length; j++) {
+            var p = items[j].split("|");
+            icons += '<a href="/details/' + p[0] + '.html" title="' + p[0] + '">' + icon(p[0]) + '</a>';
+            list += '<li><span class="chip">' + icon(p[0]) + '</span><span>' + p[1] + '</span></li>';
+          }
+          html += '<details open><summary><span class="age">' + age + '–' + (age + 1) + '<small>yrs</small></span>' +
+            '<span class="chev"></span><span class="icons">' + icons + '</span></summary><ul>' + list + '</ul></details>';
         }
-        html += '<details><summary><span class="age">' + age + '–' + (age + 1) + '<small>yrs</small></span>' +
-          '<span class="chev"></span><span class="icons">' + icons + '</span></summary><ul>' + list + '</ul></details>';
+        html += '</div></section>';
+        root.insertAdjacentHTML("beforeend", html);
       }
-      html += '</div></section>';
-      root.insertAdjacentHTML("beforeend", html);
-    }
-    function setAll(open) {
-      var d = document.querySelectorAll("details");
-      for (var i = 0; i < d.length; i++) d[i].open = open;
-    }
-    document.getElementById("open-all").addEventListener("click", function () { setAll(true); });
-    document.getElementById("close-all").addEventListener("click", function () { setAll(false); });
+      function setAll(open) {
+        var d = document.querySelectorAll("details");
+        for (var i = 0; i < d.length; i++) d[i].open = open;
+      }
+      document.getElementById("open-all").addEventListener("click", function () { setAll(true); });
+      document.getElementById("close-all").addEventListener("click", function () { setAll(false); });
+    });
   </script>
 </body>
 </html>
