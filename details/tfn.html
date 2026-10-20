@@ -8,7 +8,8 @@
     body { background: #0f1f14; color: #f5f0e6; font-family: system-ui, sans-serif; margin: 0; padding: 32px 16px; }
     .wrap { max-width: 720px; margin: 0 auto; }
     a { color: #c5a46e; }
-    h1 { margin-top: 0; color: #c5a46e; }
+    h1 { margin-top: 0; color: #c5a46e; display: flex; align-items: center; gap: 10px; }
+    .icon { width: 32px; height: 32px; stroke: #c5a46e; fill: none; stroke-width: 1.8; }
     .card { background: #1a2e1a; border: 1px solid #2a4030; border-radius: 8px; padding: 20px; margin: 16px 0; }
     .video { background: #152418; border: 1px dashed #c5a46e; border-radius: 6px; padding: 24px; text-align: center; margin: 12px 0; }
   </style>
@@ -16,7 +17,10 @@
 <body>
   <div class="wrap">
     <a href="/">← Economic Life Stages</a>
-    <h1>Tax File Number & First Bank Account</h1>
+    <h1>
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+      Tax File Number & First Bank Account
+    </h1>
     <div class="card">
       <p>Most people apply for a TFN and open their first independent bank account around ages 16–18. This unlocks casual work, super contributions and later tax returns.</p>
       <h3>Official resources & forms</h3>
