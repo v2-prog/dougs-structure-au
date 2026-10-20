@@ -3,93 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bracket — Two Years at a Time | Australian Life Stages</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="description" content="Bracket: Australian life-stage financial planner. Two-year bands from 12 to 70 with pathways for super, housing, family, and community structures.">
+  <title>Bracket — Economic Life Stages</title>
   <style>
-    :root { --bg: #0f1f14; --gold: #c5a46e; --cream: #f5f0e6; --card: #1a2e1a; }
-    body { background: var(--bg); color: var(--cream); }
+    :root {
+      --bg: #0f1f14;
+      --panel: #1a2e1a;
+      --fg: #f5f0e6;
+      --gold: #c5a46e;
+      --line: #2a4030;
+    }
+    body { background: var(--bg); color: var(--fg); font-family: system-ui, sans-serif; margin: 0; padding: 28px 16px 40px; }
+    .wrap { max-width: 1240px; margin: 0 auto; }
+    header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 6px; letter-spacing: -0.02em; }
+    header p { margin: 0; color: var(--gold); max-width: 62ch; }
+    .ctrl button { background: var(--gold); color: #0f1f14; border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; font-weight: 600; margin-left: 8px; }
+    .ctrl button.alt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    summary { list-style: none; cursor: pointer; padding: 12px; background: linear-gradient(180deg, #1a2e1a, #152418); }
+    summary::-webkit-details-marker { display: none; }
+    .age { font-weight: 700; font-size: 1.15rem; }
+    .icons { display: flex; gap: 8px; margin-top: 6px; }
+    .icons a { color: var(--gold); text-decoration: none; font-size: 1.25rem; }
+    .icons a:hover { color: #fff; }
+    .chev { display: inline-block; width: 8px; height: 8px; border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(45deg); float: right; }
+    details[open] .chev { transform: rotate(225deg); }
+    ul { list-style: none; margin: 0; padding: 12px; font-size: 0.9rem; }
+    li { margin-bottom: 6px; }
+    footer { margin-top: 40px; color: var(--gold); font-size: 0.85rem; opacity: 0.8; }
   </style>
 </head>
-<body class="font-serif">
-  <!-- Disclaimer -->
-  <div class="bg-amber-900/40 border-b border-amber-800/50 px-4 py-2 text-xs text-amber-100 text-center">
-    <strong>Educational only.</strong> General information. Not personalised advice. Verify official Australian sources.
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Bracket</h1>
+        <p>Economic life stages — two years at a time. Open a card for the key changes. Icons link to detailed pages with government forms, videos and tools.</p>
+      </div>
+      <div class="ctrl">
+        <button type="button" id="open-all">Open all</button>
+        <button type="button" id="close-all" class="alt">Close all</button>
+      </div>
+    </header>
+
+    <main id="rows" class="grid"></main>
+
+    <footer>
+      <p>Averages for Australia. Age 60 is the super preservation age (born after 1 July 1964). Age Pension age is 67. Educational only — not personal advice.</p>
+    </footer>
   </div>
 
-  <header class="border-b border-[#2a4030]">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <a href="/" class="flex items-center gap-3">
-        <span class="text-2xl text-[#c5a46e]">[ ]</span>
-        <div>
-          <div class="text-xl font-bold tracking-tight">Bracket</div>
-          <div class="text-xs text-[#c5a46e]">Two years at a time</div>
-        </div>
-      </a>
-      <nav class="flex flex-wrap gap-3 text-sm">
-        <a href="/" class="text-[#c5a46e] hover:text-white">Home</a>
-        <a href="/planner/" class="text-[#c5a46e] hover:text-white">Life Stages</a>
-        <a href="#pathways" class="text-[#c5a46e] hover:text-white">Pathways</a>
-        <a href="#rooms" class="text-[#c5a46e] hover:text-white">Rooms</a>
-      </nav>
-    </div>
-  </header>
+  <script>
+    const DATA = [
+      { age: "12-13", icons: [["bike", "/details/bike.html", "🚴"], ["coin", "/details/pocket-money.html", "$"] , ["globe", "/details/community.html", "🌐"]], items: ["First bike or scooter", "Pocket money for chores", "Sporting and community activities"] },
+      { age: "14-15", icons: [["phone", "/details/phone.html", "📱"], ["job", "/details/casual-work.html", "💼"], ["coin", "/details/saving.html", "$"]], items: ["First casual jobs", "Own phone and plan", "Saving for a bigger purchase"] },
+      { age: "16-17", icons: [["car", "/details/learner.html", "🚗"], ["card", "/details/tfn.html", "💳"], ["job", "/details/junior-wages.html", "💼"]], items: ["Learner licence", "First bank account and TFN", "Casual junior wages"] },
+      { age: "18-19", icons: [["vote", "/details/vote.html", "🗳️"], ["cap", "/details/study.html", "🎓"], ["book", "/details/help.html", "📚"]], items: ["Enrolled to vote", "Uni, TAFE or apprenticeship", "HELP debt or Youth Allowance"] },
+      { age: "50-51", icons: [["chart", "/details/peak.html", "📈"], ["home", "/details/mortgage.html", "🏠"], ["shield", "/details/estate.html", "🛡️"]], items: ["Peak earning years", "Mortgage reducing", "Estate and insurance review"] },
+      { age: "66-67", icons: [["sun", "/details/pension.html", "☀️"], ["coin", "/details/drawdown.html", "$"], ["cross", "/details/aged-care.html", "🏥"]], items: ["Age Pension eligibility", "Super drawdowns", "Health and aged care planning"] }
+    ];
 
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
-    <div class="text-[#c5a46e] text-sm tracking-widest uppercase mb-4">Australian Life Stages</div>
-    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-      Navigate life<br>
-      <span class="text-[#c5a46e]">two years at a time.</span>
-    </h1>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-10">
-      Clear pathways for super, housing, family, and community structures from age 12 to 70. Built for Australian rules and real living arrangements.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/planner/" class="bg-[#c5a46e] text-[#0f1f14] px-8 py-3 rounded-lg font-medium hover:bg-[#d4b57a] transition">Explore Life Stages</a>
-      <a href="#pathways" class="border border-[#c5a46e] text-[#c5a46e] px-8 py-3 rounded-lg font-medium hover:bg-[#c5a46e]/10 transition">See Pathways</a>
-    </div>
-  </section>
+    const root = document.getElementById("rows");
+    DATA.forEach(d => {
+      const iconsHtml = d.icons.map(i => `<a href="${i[1]}" title="${i[0]}">${i[2]}</a>`).join("");
+      const itemsHtml = d.items.map(item => `<li>${item}</li>`).join("");
+      root.insertAdjacentHTML("beforeend", `
+        <details>
+          <summary>
+            <span class="age">${d.age}</span>
+            <span class="chev"></span>
+            <div class="icons">${iconsHtml}</div>
+          </summary>
+          <ul>${itemsHtml}</ul>
+        </details>
+      `);
+    });
 
-  <!-- Pathways -->
-  <section id="pathways" class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="text-2xl md:text-3xl text-center mb-10">Choose your pathway</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
-        <div class="text-3xl mb-3">📅</div>
-        <h3 class="text-xl mb-2">2-Year Bands</h3>
-        <p class="text-sm opacity-80 mb-4">Focused guidance for every stage with scenarios, wealth tables, and living arrangements.</p>
-        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">Browse bands →</a>
-      </div>
-      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
-        <div class="text-3xl mb-3">🏡</div>
-        <h3 class="text-xl mb-2">Living & Structures</h3>
-        <p class="text-sm opacity-80 mb-4">From urban ownership to eco-villages, cooperatives, and multi-generational households.</p>
-        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">View structures →</a>
-      </div>
-      <div class="bg-[#1a2e1a] p-6 rounded-xl border border-[#2a4030] hover:border-[#c5a46e] transition">
-        <div class="text-3xl mb-3">📊</div>
-        <h3 class="text-xl mb-2">Wealth Pathways</h3>
-        <p class="text-sm opacity-80 mb-4">Modest to comfortable to wealthy outcomes aligned with ASFA standards.</p>
-        <a href="/planner/" class="text-[#c5a46e] text-sm hover:underline">See outcomes →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick entry -->
-  <section class="max-w-6xl mx-auto px-4 py-12 text-center">
-    <p class="opacity-70 mb-6">Start with the band that matches where you are now.</p>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href="/planner/bands/12-13.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">12–13</a>
-      <a href="/planner/bands/50-51.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">50–51</a>
-      <a href="/planner/bands/66-67.md" class="px-4 py-2 border border-[#2a4030] rounded-full text-sm hover:border-[#c5a46e]">66–67</a>
-      <a href="/planner/" class="px-4 py-2 border border-[#c5a46e] text-[#c5a46e] rounded-full text-sm">All bands</a>
-    </div>
-  </section>
-
-  <footer class="border-t border-[#2a4030] mt-16 py-8 text-center text-xs opacity-60">
-    <p>Bracket · Australian life-stage education · coeconomics.com</p>
-    <p class="mt-1">Educational prototype. Not affiliated with any government or financial institution.</p>
-  </footer>
+    document.getElementById("open-all").onclick = () => document.querySelectorAll("details").forEach(d => d.open = true);
+    document.getElementById("close-all").onclick = () => document.querySelectorAll("details").forEach(d => d.open = false);
+  </script>
 </body>
 </html>
