@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economic life stages | coeconomics.com</title>
+<style>
+:root{--bg:#eef0ee;--ink:#14171a;--mute:#5d6468;--card:#fff;--line:#d9dcd9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 "Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:40px 24px 56px}
+h1{font-size:2.5rem;line-height:1.1;margin:0 0 8px;letter-spacing:-.02em}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 20px}
+.bar{display:flex;gap:10px;margin-bottom:8px}
+button{font:inherit;font-weight:600;border-radius:8px;padding:9px 16px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink)}
+button.d{background:var(--ink);color:#fff;border-color:var(--ink)}
+button:focus-visible,summary:focus-visible{outline:3px solid #1a73e8;outline-offset:2px}
+h2{display:flex;align-items:center;gap:10px;font-size:1.05rem;margin:30px 0 12px}
+h2 i{width:12px;height:12px;border-radius:2px;background:var(--c)}
+h2 small{font-size:.72rem;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;align-items:start}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+summary{list-style:none;cursor:pointer;background:var(--c);color:#fff;padding:12px 14px}
+summary::-webkit-details-marker{display:none}
+.top{display:flex;justify-content:space-between;align-items:center}
+.age{font-size:1.15rem;font-weight:700}
+.age small{font-size:.65rem;letter-spacing:.08em;opacity:.85;margin-left:3px}
+.chev{width:18px;height:18px;transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.hi{display:flex;gap:7px;margin-top:6px}
+.hi svg{width:15px;height:15px}
+.ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.body{padding:12px 14px 14px}
+ul{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}
+li{display:grid;grid-template-columns:26px 1fr;gap:9px;align-items:start;font-size:.9rem}
+li span.b{width:26px;height:26px;border:1px solid var(--line);border-radius:6px;display:grid;place-items:center;color:var(--c)}
+li span.b svg{width:15px;height:15px}
+li em{font-style:normal;font-weight:700;color:var(--c);margin-right:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.two div,.sc div{font-size:.8rem;background:#f5f6f4;border-radius:6px;padding:7px 8px}
+.two b,.sc b{display:block;font-size:.7rem;color:var(--c);margin-bottom:2px}
+.sc{display:grid;gap:8px}
+.sc div{border-left:3px solid var(--c)}
+.sc .p{border-left-style:dashed}
+footer{margin-top:36px;color:var(--mute);font-size:.82rem;max-width:80ch}
+@media(prefers-color-scheme:dark){:root{--bg:#161a19;--ink:#eceeed;--mute:#a1a8a5;--card:#1f2524;--line:#333a38}button{background:#1f2524}button.d{background:#eceeed;color:#161a19}.two div,.sc div{background:#272e2c}}
+</style>
+</head>
+<body>
+<main>
+<h1>Economic life stages</h1>
+<p class="lead">What typically changes in a person’s money at each two-year age band, from 12 to 81, in Australia. Open a card for each year’s events, men and women, and rich and poor scenarios.</p>
+<div class="bar"><button class="d" id="oa">Open all</button><button id="ca">Close all</button></div>
+<div id="app"></div>
+<footer>Figures are general Australian averages (for example: leaving home at 23–24, average HECS debt about $28,000, first home buyers aged 34–37, median age of losing a parent about 50, presbyopia from about 40, average hysterectomy age 54, median entry to permanent aged care 85, life expectancy 85.8 for women and 82.3 for men). Individual outcomes vary widely. This is general information, not financial, legal or medical advice.</footer>
+</main>
+<script>
+var P='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+var I={
+brief:'<path d="M3 8h18v11H3zM9 8V5h6v3M3 13h18"/>',
+cap:'<path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5"/>',
+house:'<path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/>',
+key:'<circle cx="8" cy="14" r="4"/><path d="M11 11l9-8M17 6l3 3"/>',
+car:'<path d="M4 16v-5l2-5h12l2 5v5zM4 12h16"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/>',
+cross:'<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>',
+shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/>',
+dollar:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6v2M12 16v2"/>',
+person:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+gift:'<path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13M12 7c-3 0-4-4-1.5-4S12 6 12 7zM12 7c3 0 4-4 1.5-4S12 6 12 7z"/>',
+eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+chart:'<path d="M4 20V4M4 20h16M8 15l4-4 3 3 5-6"/>',
+clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+down:'<path d="M6 9l6 6 6-6"/>'
+};
+function ic(n,c){return '<svg class="'+(c||'ic')+'" viewBox="0 0 24 24" '+P+' aria-hidden="true">'+I[n]+'</svg>'}
+var G=[["Mountain View","#4b7b6a"],["Bronze","#8c5b2f"],["Khaki","#bfaa72"],["Slate","#566b7b"],["Heather","#7a6384"],["Stone","#7b776c"],["Dusk","#4d5560"]];
+// band: [label, events "age icon text", men, women, rich, poor]
+var B=[
+["12–13",["12 car First bike or scooter, often a gift","12 dollar Pocket money for chores","13 chart Club fees, gear and hobbies","13 gift A grandparent’s death is possible in childhood"],"Contact-sport gear leads hobby costs","Dance and netball fees; braces for both","Child on family hospital cover; braces and dental used","Public dental waitlists; braces delayed"],
+["14–15",["14 brief First casual job: paper round, cafe, retail","14 dollar Own phone and plan, usually parent-paid","15 chart Saving for a bigger purchase","15 eye Influencer testimonials meet first online ads"],"Casual work in retail or as a trades helper","Hospitality and retail; period products add cost","Stays on parents’ policy; learns from advisers","Buy-now-pay-later testimonials tempt; Medicare only"],
+["16–17",["16 car Learner permit at 16, supervised driving","16 dollar First bank account, card and Tax File Number","17 brief Casual wages at junior pay rates","17 key Provisional licence around 17–18"],"Young male drivers pay higher premiums","Usually lower young-driver premiums","Parents add a car and pay for lessons","Lessons and log-book hours squeezed"],
+["18–19",["18 shield Enrol to vote; adult legal rights","18 cap Leave school for uni, TAFE or apprenticeship","19 dollar HECS-HELP debt or Youth Allowance begins","19 cross Dependant cover ends at the fund’s age limit"],"Apprenticeships skew male: low pay, tool costs","More likely at uni; HECS builds earlier","Family pays fees upfront; no HECS","Youth Allowance plus work; indexation bites"],
+["20–21",["20 car Full licence by 20; first car, insurance, rego","20 key Share house or leave home","21 brief Trade wages or part-time work beside study","21 gift First grandparent loss often by early twenties"],"Men leave home later, about 24","Women leave home earlier, about 23","Parents co-sign a lease; cover kept","Rent eats pay; dental delayed"],
+["22–23",["22 brief Graduate job, first full-time salary","22 chart Super builds on every pay","23 cap HELP repayments start above the threshold","23 key Average age of leaving home is 23–24"],"Men’s average exit from home: 24","Women’s average exit: 23","Takes hospital cover early for the young-adult discount","Skips cover; a friend’s “can’t lose” tip is the real risk"],
+["24–25",["24 globe Travel or working holiday","24 key Own rental; rent takes a big share of pay","25 chart First pay rise or job switch","25 dollar HECS average about $28,000; heaviest under 40"],"Pay tends to climb faster this decade","Pay gap opens around job changes","Parents fund travel and a deposit","Working holiday money pays down debt first"],
+["26–27",["26 brief Mid-level role with specialised skills","26 shield Health, income and car insurance bought","27 dollar Saving a house deposit","27 cross Cover by age 31 avoids the 2% yearly loading"],"Super balances build faster","Super gap starts to open","Takes cover now: locks the discount early","Medicare only; may pay loading later"],
+["28–29",["28 house Deposit goal and first home buyer schemes","28 person Partner moves in; costs shared","29 chart Salary growth continues","29 gift Wedding or engagement spending"],"Median first-marriage age about 32","Median first-marriage age about 30","Parents gift a deposit","Saves slowly; “rent-to-own” testimonials tempt"],
+["30–31",["30 house Typical first home purchase and mortgage","30 gift Weddings and partnered households","31 shield Life insurance and a will","31 cross Last year to hold hospital cover without loading"],"Fathers’ average age at first child about 33","Mothers’ average age at first child about 31","Buys with help; picks cover with obstetrics","Buys late or rents; public maternity"],
+["32–33",["32 person First child for many, around 31–32","32 dollar Parental leave and a dip in household income","33 house Move to a larger home","33 cross Obstetric cover has a 12-month wait"],"Shorter leave; income barely dips","Income dips; super gap widens","Private birth with a chosen obstetrician","Public birth through Medicare; tight budget"],
+["34–35",["34 dollar Childcare costs near peak, partly offset by subsidy","34 house First home buyers average 34–37","35 brief Return to work, often part-time","35 car Family car upgrade"],"Mostly back full-time","More often back part-time","Both work; paid after-school care","One cuts hours; avoids “guaranteed return” seminars"],
+["36–37",["36 house Mortgage at its heaviest; rate changes matter","36 person Second child possible","37 brief Promotion into management","37 chart Investment property pitches with testimonials"],"Management promotion tends to come sooner","Often delayed by career breaks","Uses a licensed adviser; keeps cover","Spruiker testimonials risk mortgage stress"],
+["38–39",["38 chart Kids’ sport, school and activity costs","38 brief Senior role, pay rising","39 shield Insurance and super reviewed","39 cross Family dental and eye costs rise"],"Super balance tends to run higher","Balance lower from career breaks","Private school fees; top extras cover","Public school; bulk billing"],
+["40–41",["40 eye Presbyopia begins around 40; reading glasses","40 chart Earnings climbing toward their peak","41 house Renovations or an upgrade","41 dollar Extra mortgage repayments"],"Cholesterol and blood-pressure checks matter","BreastScreen available from 40","Extras cover pays for glasses and checks","Cheap readers; checks skipped"],
+["42–43",["42 cap Kids reach high school; costs step up","42 brief Second income or business start","43 chart Refinance for a better rate","43 cross Stress, sleep and weight show in health costs"],"Heart and workplace-injury risk climb","Fertility and perimenopause planning","Sees a private specialist within weeks","Public waits of months; visits delayed"],
+["44–45",["44 cross Chronic conditions become common from mid-40s","44 chart Super top-ups gain importance","45 brief Earnings near peak, then plateau","45 person Parents begin to need help"],"Heart disease and diabetes risk rise","Perimenopause adds GP costs","Premium cover with chronic-care programs","Out-of-pocket gaps at the GP"],
+["46–47",["46 car Teens: cars, phones, uni savings","46 person Separation is common in these years","47 shield Super check; consolidate accounts","47 cross Bowel, skin and blood-pressure checks"],"Often pays child support and splits assets","Post-separation income often drops more","Mediation and legal advice split assets","Legal Aid; housing strain after property split"],
+["48–49",["48 cap University costs for kids begin","48 chart Peak income often reached","49 dollar Catch-up super contributions","49 shield Will, estate plan, power of attorney"],"Super lead over women is widest","Balance behind; extra contributions help","Pays an adviser; checks credentials","Testimonial schemes target thin super"],
+["50–51",["50 gift Median age of losing a parent is about 50","50 cross Bowel screening from 45; breast screening 50–74","51 gift Possible inheritance; estate admin costs","51 house Empty-nest downsizing thoughts"],"Prostate talk with a GP from 50","Menopause median age about 51","Inheritance boosts super and property","Funeral, probate and carer leave cost income"],
+["52–53",["52 person Parent care: aged care assessments","52 chart Super carry-forward catch-up","53 house Downsize or invest a windfall","53 brief Shift to lower-stress roles"],"Heart-attack risk peaks","Menopause treatment costs","Planned procedures at private hospitals","Public elective surgery waitlists"],
+["54–55",["54 cross Average hysterectomy age is 54","54 clock Preservation age is 60; planning starts","55 house Kids leave; downsize decision","55 chart Age Pension rules planning"],"Pre-retirement tax planning","About 30% have a hysterectomy before 70","Chooses surgeon; pays gap fees","Public list; lost work income"],
+["56–57",["56 brief Redundancy or reduced hours risk","56 chart Super balance in late growth","57 person Caring for a parent or grandkids","57 cross Chronic conditions need ongoing management"],"Physical roles end earlier","Lower super raises retirement risk","Transition-to-retirement strategy with adviser","Hardship early access; scam testimonials target savers"],
+["58–59",["58 clock Transition-to-retirement pension option","58 dollar Long-service leave and payouts","59 house Final mortgage payments","59 person Grandchildren possible"],"Retires about two years later on average","Retires a little earlier on average","Mortgage cleared; cover kept","Mortgage carries into retirement"],
+["60–61",["60 clock Preservation age: super accessible once retired","60 brief Retire or pivot to part-time","61 shield Hospital cover premiums rise with age","61 dollar Seniors Card and concessions (rules vary by state)"],"Life expectancy 82.3: plan a shorter horizon","Life expectancy 85.8: stretch money further","Draws super income; keeps premium cover","Drops hospital cover; uses public system"],
+["62–63",["62 globe Spending shifts to travel","62 cross Dental, eye and hearing costs rise","63 house Downsizing: stamp duty and moving costs","63 shield Estate plan updated"],"Hearing loss tends to come earlier","Osteoporosis risk after menopause","Funds travel from super; extras cover","Stays home; waits for public dental"],
+["64–65",["64 clock Retirement for many; super drawdown starts","64 dollar Age Pension income and assets tests","65 cross Medicare, PBS and Seniors health benefits","65 house Equity-release pitches begin"],"Often has the larger super balance","Leans on Age Pension sooner","Self-funded; weighs adviser fees","Age Pension and concessions; avoids equity-release testimonials"],
+["66–67",["66 dollar Age Pension age is 67","66 chart Super income tax-free after 60","67 cross Medicare Safety Net and PBS savings","67 shield Power of attorney and advance care directive"],"Less likely to rely on the pension","More likely to rely on the pension","Super income plus pension top-up","Full Age Pension; careful budgeting"],
+["68–69",["68 cross Heart disease, diabetes and arthritis are common","68 person Grandchild care support","69 house Home maintenance and downsizing","69 shield Hospital cover waiting periods matter"],"Heart disease risk peaks","Arthritis and osteoporosis","Private joint replacement in weeks","Public joint replacement wait"],
+["70–71",["70 dollar Age Pension assets tested and indexed","70 car Licence reviews begin in some states","71 gift Peer deaths; funeral planning","71 cross Hearing aids and dental costs"],"Less often widowed","More often widowed and living alone","Prepaid funeral; trusted adviser","Funeral bond; scam testimonials target retirees"],
+["72–73",["72 house Falls risk rises; home modifications","72 person My Aged Care assessment may begin","73 cross Home Care Package approval","73 shield Estate documents refreshed"],"Cancer screening costs continue","Bone-density tests","Private home help with no wait","Months waiting for a Home Care Package"],
+["74–75",["74 dollar Pension means test reassessed","74 shield Age-based premium rises","75 house Downsize or retirement village move","75 gift Gifts over limits count in pension tests"],"May leave finances to a partner","Often manages alone after widowhood","Village ingoing contribution paid","Stays home; public aged care later"],
+["76–77",["76 cross Mobility aids and in-home care increase","76 car Driving may stop; transport costs shift","77 cross Cognitive health checks","77 shield Enduring power of attorney used for some"],"Time horizon is shortest","Longer horizon; savings must stretch","Concierge in-home care","Family provides informal care"],
+["78–79",["78 cross Home care package or respite stay","78 dollar Aged care means testing assessed","79 cross Hospital stays more frequent","79 house Selling the home to fund care considered"],"Often cared for by a partner","Often cared for in aged care","Pays a refundable accommodation deposit","Pays only the subsidised daily fee"],
+["80–81",["80 clock Life expectancy: women 85.8, men 82.3","80 house Median entry to permanent aged care is 85","81 cross Palliative care needs","81 gift Estate settled by executors; probate"],"Passes the male life expectancy of 82.3","Still ahead of the female 85.8","Private aged care room; deposit paid","Subsidised bed; family trusts the executor"]
+];
+var app=document.getElementById('app'),h='';
+B.forEach(function(b,n){
+ var g=Math.floor(n/5),c=G[g][1];
+ if(n%5==0){if(n)h+='</div>';var s=12+g*10;h+='<h2 style="--c:'+c+'"><i></i>'+G[g][0]+' <small>Ages '+s+' to '+(s+9)+'</small></h2><div class="row">'}
+ var ev=b[1].map(function(e){var p=e.split(' ');return{a:p[0],i:p[1],t:p.slice(2).join(' ')}});
+ var top=[];ev.forEach(function(e){if(top.indexOf(e.i)<0&&top.length<3)top.push(e.i)});
+ h+='<details style="--c:'+c+'"><summary><div class="top"><span class="age">'+b[0]+'<small>YRS</small></span>'+ic('down','chev ic')+'</div><div class="hi">'+top.map(function(i){return ic(i)}).join('')+'</div></summary><div class="body"><ul>'+
+ ev.map(function(e){return '<li><span class="b">'+ic(e.i)+'</span><span><em>'+e.a+'</em>'+e.t+'</span></li>'}).join('')+
+ '</ul><div class="two"><div><b>Men</b>'+b[2]+'</div><div><b>Women</b>'+b[3]+'</div></div><div class="sc"><div><b>Rich scenario</b>'+b[4]+'</div><div class="p"><b>Poor scenario</b>'+b[5]+'</div></div></div></details>';
+});
+app.innerHTML=h+'</div>';
+function all(o){[].forEach.call(document.querySelectorAll('details'),function(d){d.open=o})}
+document.getElementById('oa').onclick=function(){all(true)};
+document.getElementById('ca').onclick=function(){all(false)};
+</script>
+</body>
+</html>
