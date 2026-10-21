@@ -5,53 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bracket — Economic Life Stages</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
   <style>
     :root {
       --bg: #EEF1F0;
-      --panel: #FFFFFF;
       --fg: #1B2321;
       --muted: #55625E;
-      --line: #CBD3D0;
-      --btn-bg: #1B2321;
-      --btn-fg: #EEF1F0;
       --font-display: "Bricolage Grotesque", system-ui, sans-serif;
       --font-body: "Figtree", system-ui, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
     }
-    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.45; padding: 28px 16px 40px; margin: 0; }
-    .wrap { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
-    header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
-    h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.05; margin: 0 0 6px; }
-    header p { margin: 0; color: var(--muted); max-width: 62ch; }
-    .ctrl { display: flex; gap: 8px; }
-    .ctrl button { font: 600 0.85rem var(--font-body); background: var(--btn-bg); color: var(--btn-fg); border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; }
-    .ctrl button.alt { background: transparent; color: var(--fg); border: 1px solid var(--line); }
-    .row { display: flex; flex-direction: column; gap: 10px; }
-    .row-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
-    .swatch { width: 14px; height: 14px; border-radius: 3px; background: var(--c); align-self: center; flex: none; }
-    .row-label b { font-family: var(--font-display); font-size: 1.05rem; }
-    .row-label span { font: 500 0.78rem var(--font-mono); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
-    .grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: start; }
-    @media (max-width: 1080px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 720px)  { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 440px)  { .grid { grid-template-columns: minmax(0, 1fr); } }
-    details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; min-width: 0; }
-    summary { list-style: none; cursor: pointer; background: var(--c); color: var(--ink); padding: 10px 12px; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "age chev" "icons icons"; gap: 8px 8px; align-items: center; }
-    summary::-webkit-details-marker { display: none; }
-    .age { grid-area: age; font: 700 1.15rem var(--font-mono); letter-spacing: -0.02em; }
-    .icons { grid-area: icons; display: flex; gap: 8px; }
-    .icons a { color: inherit; text-decoration: none; }
-    .chev { grid-area: chev; width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
-    details[open] .chev { transform: rotate(225deg); }
-    .i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    ul { list-style: none; margin: 0; padding: 12px; display: grid; gap: 10px; }
-    li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 0.9rem; }
-    .chip { width: 26px; height: 26px; border-radius: 6px; background: var(--c); color: var(--ink); display: grid; place-items: center; }
-    footer { color: var(--muted); font-size: 0.82rem; max-width: 80ch; }
+    * { box-sizing: border-box; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); margin: 0; padding: 24px 16px 48px; }
+    .wrap { max-width: 1400px; margin: 0 auto; }
+    h1 { font-family: var(--font-display); font-size: 2.2rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 28px; max-width: 60ch; }
+    .row { margin-bottom: 28px; }
+    .row-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 600; }
+    .swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--c); }
+    .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--c);
+      color: var(--ink);
+      border-radius: 12px;
+      padding: 16px 12px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+    }
+    .age { font-family: var(--font-mono); font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; }
+    .age small { font-size: 0.7rem; font-weight: 500; margin-left: 6px; opacity: 0.85; }
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .item {
+      flex: 1;
+      text-align: center;
+      font-size: 0.72rem;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+    .circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+      margin: 0 auto 6px;
+      display: grid;
+      place-items: center;
+    }
+    .i { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .item a { color: inherit; text-decoration: none; }
+    footer { margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
   </style>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute">
     <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-8h4l4 8M10 8l3 8"/></symbol>
     <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6.5V8m0 8v1.5"/></symbol>
     <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17"/></symbol>
@@ -76,99 +89,68 @@
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div>
-        <h1>Economic life stages</h1>
-        <p>What typically changes in a person's money at each two-year age band, from 12 to 81. Open a card for the details.</p>
-      </div>
-      <div class="ctrl">
-        <button type="button" id="open-all">Open all</button>
-        <button type="button" id="close-all" class="alt">Close all</button>
-      </div>
-    </header>
-    <main id="rows"></main>
+    <h1>Economic life stages</h1>
+    <p class="sub">Typical economic considerations in two-year age bands, ages 12 to 81, Australia.</p>
+    <div id="rows"></div>
     <footer>
-      <p>Averages are for Australia and vary by state, income and household. Age 60 is the super preservation age for people born after 1 July 1964, and the Age Pension age is 67.</p>
-      <p>Educational only — not personal financial advice.</p>
+      <p>Averages for Australia. Age 60 preservation (born after 1 July 1964), Age Pension age 67. Educational only — not personal financial advice.</p>
     </footer>
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var ROWS = [
-        { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
-        { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
-        { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
-        { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
-        { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
-        { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
-        { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
-      ];
-      var DATA = [
-        ["bike|First bike or scooter, usually a gift", "coin|Pocket money for chores", "ball|Sporting club fees, gear and hobbies"],
-        ["job|First casual jobs where rules allow: paper round, cafe, retail", "phone|Own phone and plan, usually paid by parents", "coin|Saving for a bigger purchase"],
-        ["car|Learner licence, lessons and supervised driving", "card|First bank account, card and Tax File Number", "job|Casual wages at junior pay rates"],
-        ["vote|Enrolled to vote, adult legal rights", "cap|Leaves school for uni, TAFE or an apprenticeship", "book|Study debt (HECS-HELP) or Youth Allowance begins"],
-        ["car|First car, with insurance and registration costs", "key|Share house rent, or still living at home", "tool|Trade wages, or part-time work beside study"],
-        ["job|Graduate job and first full-time salary", "chart|Super contributions start building", "book|HELP repayments begin once income passes the threshold"],
-        ["plane|Travel and working holidays", "key|Own rental, with rent taking a large share of pay", "chart|First pay rise or job switch"],
-        ["job|Mid-level role with specialised skills", "shield|Health, income and car insurance", "coin|Saving a house deposit"],
-        ["key|Deposit goal, first home buyer schemes", "heart|Partner moves in, costs are shared", "chart|Salary growth continues"],
-        ["home|Typical first home purchase and mortgage", "heart|Weddings and partnered households", "shield|Life insurance and a will"],
-        ["person|First child for many, around age 31", "coin|Parental leave and a dip in household income", "home|Move to a larger home"],
-        ["coin|Childcare costs near their peak, partly offset by subsidy", "job|Return to work, often part-time", "car|Family car upgrade"],
-        ["home|Mortgage at its heaviest, rate changes matter", "person|Second child possible", "chart|Promotion into management"],
-        ["ball|Kids' sport, school and activity costs", "job|Senior role, pay rising", "shield|Insurance and super reviewed"],
-        ["chart|Earnings climbing toward their peak", "home|Renovations or an upgrade", "coin|Extra mortgage repayments"],
-        ["book|School costs rise: devices, excursions, tutoring", "car|Second car or replacement", "heart|Helping ageing parents begins"],
-        ["card|Teenage costs: phones, food, activities", "chart|Higher tax bracket", "plane|Family holidays"],
-        ["job|Leadership roles or own business", "coin|Super top-ups and investing", "cross|Health checks and dental costs rise"],
-        ["chart|Peak earning years begin", "cap|Child at university or TAFE", "home|Mortgage balance shrinking"],
-        ["coin|Peak saving, catch-up super contributions", "key|Kids move out, or come back home", "shield|Insurance and estate reviewed"],
-        ["chart|Highest average income of a career", "home|Mortgage near paid off", "heart|Supporting adult children"],
-        ["car|Car replacement or long trips", "cross|Health costs and private cover", "coin|Retirement planning gets serious"],
-        ["sun|Empty nest, spending changes", "chart|Super balance grows fastest", "plane|Bigger travel budget"],
-        ["home|Downsizing considered", "job|Reduced hours or phased retirement", "shield|Retirement adviser and estate planning"],
-        ["coin|Super accessible after retiring (preservation age 60)", "sun|Many cut back or retire", "cross|Health spending rises"],
-        ["sun|Retirement for many, wages stop", "coin|Super pension or lump sum drawn", "plane|Travel years"],
-        ["sun|Average retirement age is around 64 to 65", "chart|Spending shifts from work to leisure", "shield|Seniors Card and concessions"],
-        ["coin|Age Pension age is 67, part-pension possible", "cross|Medicare and out-of-pocket costs", "home|Home equity is the main asset"],
-        ["coin|Age Pension plus super drawdowns", "cross|Health costs rise", "heart|Grandchildren: gifts and care"],
-        ["coin|Minimum super drawdown rates apply", "home|Maintenance costs, possible downsize", "car|Driving less, licence reviews"],
-        ["cross|Specialist care and medication", "heart|Gifts and help to family", "coin|Pension income steady"],
-        ["home|Home modifications for safety", "cross|Hospital and dental costs", "coin|Careful budgeting on a fixed income"],
-        ["heart|Estate planning, powers of attorney", "cross|Health services used more", "home|Considering retirement living"],
-        ["home|Retirement village or in-home care", "cross|Home care packages", "coin|Aged care means-testing begins"],
-        ["cross|Aged care costs and fees", "heart|Support from family", "shield|Will updated, estate settled"]
-      ];
-      function icon(n) { return '<svg class="i" aria-hidden="true"><use href="#i-' + n + '"/></svg>'; }
-      var root = document.getElementById("rows");
-      for (var r = 0; r < 7; r++) {
-        var row = ROWS[r];
-        var startAge = 12 + r * 10;
-        var html = '<section class="row" style="--c:' + row.c + ';--ink:' + row.ink + '">' +
-          '<div class="row-label"><i class="swatch"></i><b>' + row.name + '</b><span>Ages ' + startAge + ' to ' + (startAge + 9) + '</span></div>' +
-          '<div class="grid">';
-        for (var k = 0; k < 5; k++) {
-          var age = startAge + k * 2;
-          var items = DATA[r * 5 + k];
-          var icons = "", list = "";
-          for (var j = 0; j < items.length; j++) {
-            var p = items[j].split("|");
-            icons += '<a href="/details/' + p[0] + '.html" title="' + p[0] + '">' + icon(p[0]) + '</a>';
-            list += '<li><span class="chip">' + icon(p[0]) + '</span><span>' + p[1] + '</span></li>';
-          }
-          html += '<details open><summary><span class="age">' + age + '–' + (age + 1) + '<small>yrs</small></span>' +
-            '<span class="chev"></span><span class="icons">' + icons + '</span></summary><ul>' + list + '</ul></details>';
-        }
-        html += '</div></section>';
-        root.insertAdjacentHTML("beforeend", html);
+    const ROWS = [
+      { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
+      { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
+      { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
+      { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
+      { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
+      { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
+      { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
+    ];
+    const DATA = [
+      [["bike","First bike"],["coin","Pocket money"],["ball","Clubs and hobbies"],["book","Starting high school"],["globe","Online life"]],
+      [["job","First casual job"],["card","First bank account"],["phone","Own phone and plan"],["coin","Spending money"],["book","Subject choices"]],
+      [["car","Learner licence"],["job","Part-time work"],["card","Tax and TFN"],["coin","First savings goal"],["cap","Choosing a pathway"]],
+      [["vote","Adult rights"],["cap","University, TAFE or work"],["book","Student support"],["car","P plates"],["card","Credit and buy now pay later"]],
+      [["car","First car"],["key","Share house or home"],["tool","Trade or study wages"],["shield","Insurance"],["coin","Early super"]],
+      [["job","Graduate job"],["chart","Super building"],["book","HELP repayments"],["plane","Travel"],["key","Own rental"]],
+      [["job","Mid-level role"],["shield","Insurance review"],["coin","House deposit"],["heart","Partner"],["chart","Salary growth"]],
+      [["key","First home schemes"],["heart","Shared costs"],["chart","Pay rise"],["home","First purchase"],["shield","Will and life insurance"]],
+      [["person","First child"],["coin","Parental leave"],["home","Larger home"],["coin","Childcare peak"],["job","Return to work"]],
+      [["home","Mortgage peak"],["person","Second child"],["chart","Promotion"],["ball","Kids activities"],["job","Senior role"]],
+      [["chart","Earnings rising"],["home","Renovations"],["coin","Extra repayments"],["book","School costs"],["car","Family car"]],
+      [["heart","Supporting parents"],["card","Teen costs"],["chart","Higher tax"],["plane","Family holidays"],["job","Leadership or business"]],
+      [["chart","Peak earnings"],["cap","Child at uni"],["home","Mortgage shrinking"],["coin","Catch-up super"],["key","Kids leaving home"]],
+      [["chart","Highest income"],["home","Mortgage nearly paid"],["heart","Adult children"],["car","Long trips"],["cross","Health costs rise"]],
+      [["sun","Empty nest"],["chart","Super grows fastest"],["plane","More travel"],["home","Downsizing"],["job","Phased retirement"]],
+      [["coin","Super accessible"],["sun","Many retire"],["cross","Health spending"],["sun","Retirement"],["coin","Super pension"]],
+      [["sun","Average retirement ~64-65"],["chart","Leisure spending"],["shield","Seniors Card"],["coin","Age Pension from 67"],["cross","Medicare costs"]],
+      [["home","Home equity main asset"],["coin","Pension + drawdown"],["cross","Health costs"],["heart","Grandchildren"],["coin","Minimum drawdowns"]],
+      [["home","Maintenance or downsize"],["car","Driving less"],["cross","Specialist care"],["heart","Family gifts"],["coin","Steady pension"]],
+      [["home","Home modifications"],["cross","Hospital and dental"],["coin","Fixed-income budget"],["heart","Power of attorney"],["person","Family support"]],
+      [["heart","Estate planning"],["cross","Health services"],["home","Retirement living"],["home","Village or home care"],["cross","Home Care Package"]],
+      [["coin","Aged care means test"],["cross","Respite"],["person","Family support"],["cross","Aged care costs"],["heart","Family support"]],
+      [["shield","Settling the estate"],["cross","Health"],["heart","Legacy gifts"],["home","Care planning"],["coin","Fixed income"]]
+    ];
+    function icon(n) { return `<svg class="i"><use href="#i-${n}"/></svg>`; }
+    const root = document.getElementById("rows");
+    ROWS.forEach((row, r) => {
+      const start = 12 + r * 10;
+      let html = `<section class="row" style="--c:${row.c};--ink:${row.ink}">
+        <div class="row-label"><span class="swatch"></span>${row.name} · ages ${start} to ${start+9}</div>
+        <div class="grid">`;
+      for (let k = 0; k < 5; k++) {
+        const age = start + k * 2;
+        const items = DATA[r * 5 + k] || [];
+        html += `<div class="card">
+          <div class="age">${age}–${age+1}<small>years</small></div>
+          <div class="icons">`;
+        items.slice(0,5).forEach(([ic, label]) => {
+          html += `<div class="item"><a href="/details/${ic}.html" title="${label}"><div class="circle">${icon(ic)}</div>${label}</a></div>`;
+        });
+        html += `</div></div>`;
       }
-      function setAll(open) {
-        var d = document.querySelectorAll("details");
-        for (var i = 0; i < d.length; i++) d[i].open = open;
-      }
-      document.getElementById("open-all").addEventListener("click", function () { setAll(true); });
-      document.getElementById("close-all").addEventListener("click", function () { setAll(false); });
+      html += `</div></section>`;
+      root.insertAdjacentHTML("beforeend", html);
     });
   </script>
 </body>
