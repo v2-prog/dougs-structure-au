@@ -7,19 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
   <style>
-    :root {
-      --bg: #EEF1F0;
-      --fg: #1B2321;
-      --muted: #55625E;
-      --font-display: "Bricolage Grotesque", system-ui, sans-serif;
-      --font-body: "Figtree", system-ui, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, monospace;
-    }
-    * { box-sizing: border-box; }
-    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); margin: 0; padding: 24px 16px 48px; }
+    :root { --bg: #EEF1F0; --fg: #1B2321; --muted: #55625E; }
+    body { background: var(--bg); color: var(--fg); font-family: Figtree, system-ui, sans-serif; margin: 0; padding: 24px 16px 48px; }
     .wrap { max-width: 1400px; margin: 0 auto; }
-    h1 { font-family: var(--font-display); font-size: 2.2rem; margin: 0 0 4px; }
-    .sub { color: var(--muted); margin: 0 0 28px; max-width: 60ch; }
+    h1 { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-size: 2.2rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 28px; }
     .row { margin-bottom: 28px; }
     .row-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 600; }
     .swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--c); }
@@ -27,39 +19,12 @@
     @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: var(--c);
-      color: var(--ink);
-      border-radius: 12px;
-      padding: 16px 12px;
-      min-height: 180px;
-      display: flex;
-      flex-direction: column;
-    }
-    .age { font-family: var(--font-mono); font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; }
+    .card { background: var(--c); color: var(--ink); border-radius: 12px; padding: 16px 12px; min-height: 180px; display: flex; flex-direction: column; }
+    .age { font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; }
     .age small { font-size: 0.7rem; font-weight: 500; margin-left: 6px; opacity: 0.85; }
-    .icons {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      margin-top: auto;
-    }
-    .item {
-      flex: 1;
-      text-align: center;
-      font-size: 0.72rem;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-    .circle {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.16);
-      margin: 0 auto 6px;
-      display: grid;
-      place-items: center;
-    }
+    .icons { display: flex; justify-content: space-between; gap: 6px; margin-top: auto; }
+    .item { flex: 1; text-align: center; font-size: 0.72rem; line-height: 1.2; font-weight: 600; }
+    .circle { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.16); margin: 0 auto 6px; display: grid; place-items: center; }
     .i { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.6; }
     .item a { color: inherit; text-decoration: none; }
     footer { margin-top: 32px; color: var(--muted); font-size: 0.85rem; }
@@ -97,60 +62,62 @@
     </footer>
   </div>
   <script>
-    const ROWS = [
-      { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
-      { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
-      { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
-      { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
-      { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
-      { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
-      { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
-    ];
-    const DATA = [
-      [["bike","First bike"],["coin","Pocket money"],["ball","Clubs and hobbies"],["book","Starting high school"],["globe","Online life"]],
-      [["job","First casual job"],["card","First bank account"],["phone","Own phone and plan"],["coin","Spending money"],["book","Subject choices"]],
-      [["car","Learner licence"],["job","Part-time work"],["card","Tax and TFN"],["coin","First savings goal"],["cap","Choosing a pathway"]],
-      [["vote","Adult rights"],["cap","University, TAFE or work"],["book","Student support"],["car","P plates"],["card","Credit and buy now pay later"]],
-      [["car","First car"],["key","Share house or home"],["tool","Trade or study wages"],["shield","Insurance"],["coin","Early super"]],
-      [["job","Graduate job"],["chart","Super building"],["book","HELP repayments"],["plane","Travel"],["key","Own rental"]],
-      [["job","Mid-level role"],["shield","Insurance review"],["coin","House deposit"],["heart","Partner"],["chart","Salary growth"]],
-      [["key","First home schemes"],["heart","Shared costs"],["chart","Pay rise"],["home","First purchase"],["shield","Will and life insurance"]],
-      [["person","First child"],["coin","Parental leave"],["home","Larger home"],["coin","Childcare peak"],["job","Return to work"]],
-      [["home","Mortgage peak"],["person","Second child"],["chart","Promotion"],["ball","Kids activities"],["job","Senior role"]],
-      [["chart","Earnings rising"],["home","Renovations"],["coin","Extra repayments"],["book","School costs"],["car","Family car"]],
-      [["heart","Supporting parents"],["card","Teen costs"],["chart","Higher tax"],["plane","Family holidays"],["job","Leadership or business"]],
-      [["chart","Peak earnings"],["cap","Child at uni"],["home","Mortgage shrinking"],["coin","Catch-up super"],["key","Kids leaving home"]],
-      [["chart","Highest income"],["home","Mortgage nearly paid"],["heart","Adult children"],["car","Long trips"],["cross","Health costs rise"]],
-      [["sun","Empty nest"],["chart","Super grows fastest"],["plane","More travel"],["home","Downsizing"],["job","Phased retirement"]],
-      [["coin","Super accessible"],["sun","Many retire"],["cross","Health spending"],["sun","Retirement"],["coin","Super pension"]],
-      [["sun","Average retirement ~64-65"],["chart","Leisure spending"],["shield","Seniors Card"],["coin","Age Pension from 67"],["cross","Medicare costs"]],
-      [["home","Home equity main asset"],["coin","Pension + drawdown"],["cross","Health costs"],["heart","Grandchildren"],["coin","Minimum drawdowns"]],
-      [["home","Maintenance or downsize"],["car","Driving less"],["cross","Specialist care"],["heart","Family gifts"],["coin","Steady pension"]],
-      [["home","Home modifications"],["cross","Hospital and dental"],["coin","Fixed-income budget"],["heart","Power of attorney"],["person","Family support"]],
-      [["heart","Estate planning"],["cross","Health services"],["home","Retirement living"],["home","Village or home care"],["cross","Home Care Package"]],
-      [["coin","Aged care means test"],["cross","Respite"],["person","Family support"],["cross","Aged care costs"],["heart","Family support"]],
-      [["shield","Settling the estate"],["cross","Health"],["heart","Legacy gifts"],["home","Care planning"],["coin","Fixed income"]]
-    ];
-    function icon(n) { return `<svg class="i"><use href="#i-${n}"/></svg>`; }
-    const root = document.getElementById("rows");
-    ROWS.forEach((row, r) => {
-      const start = 12 + r * 10;
-      let html = `<section class="row" style="--c:${row.c};--ink:${row.ink}">
-        <div class="row-label"><span class="swatch"></span>${row.name} · ages ${start} to ${start+9}</div>
-        <div class="grid">`;
-      for (let k = 0; k < 5; k++) {
-        const age = start + k * 2;
-        const items = DATA[r * 5 + k] || [];
-        html += `<div class="card">
-          <div class="age">${age}–${age+1}<small>years</small></div>
-          <div class="icons">`;
-        items.slice(0,5).forEach(([ic, label]) => {
-          html += `<div class="item"><a href="/details/${ic}.html" title="${label}"><div class="circle">${icon(ic)}</div>${label}</a></div>`;
-        });
-        html += `</div></div>`;
+    document.addEventListener("DOMContentLoaded", function () {
+      var ROWS = [
+        { name: "Mountain View", c: "#4E7A6B", ink: "#FFFFFF" },
+        { name: "Bronze", c: "#8C5E2F", ink: "#FFFFFF" },
+        { name: "Khaki", c: "#C2B280", ink: "#2A2410" },
+        { name: "Stormy Weather", c: "#5F6F78", ink: "#FFFFFF" },
+        { name: "Dusty Cedar", c: "#A85F55", ink: "#FFFFFF" },
+        { name: "Ocean Depths", c: "#2F5C6E", ink: "#FFFFFF" },
+        { name: "Silver Birch", c: "#C9CBC4", ink: "#23272A" }
+      ];
+      var DATA = [
+        [["bike","First bike"],["coin","Pocket money"],["ball","Clubs and hobbies"],["book","Starting high school"],["coin","Online life"]],
+        [["job","First casual job"],["card","First bank account"],["phone","Own phone and plan"],["coin","Spending money"],["book","Subject choices"]],
+        [["car","Learner licence"],["job","Part-time work"],["card","Tax and TFN"],["coin","First savings goal"],["cap","Choosing a pathway"]],
+        [["vote","Adult rights"],["cap","University, TAFE or work"],["book","Student support"],["car","P plates"],["card","Credit and buy now pay later"]],
+        [["car","First car"],["key","Share house or home"],["tool","Trade or study wages"],["shield","Insurance"],["coin","Early super"]],
+        [["job","Graduate job"],["chart","Super building"],["book","HELP repayments"],["plane","Travel"],["key","Own rental"]],
+        [["job","Mid-level role"],["shield","Insurance review"],["coin","House deposit"],["heart","Partner"],["chart","Salary growth"]],
+        [["key","First home schemes"],["heart","Shared costs"],["chart","Pay rise"],["home","First purchase"],["shield","Will and life insurance"]],
+        [["person","First child"],["coin","Parental leave"],["home","Larger home"],["coin","Childcare peak"],["job","Return to work"]],
+        [["home","Mortgage peak"],["person","Second child"],["chart","Promotion"],["ball","Kids activities"],["job","Senior role"]],
+        [["chart","Earnings rising"],["home","Renovations"],["coin","Extra repayments"],["book","School costs"],["car","Family car"]],
+        [["heart","Supporting parents"],["card","Teen costs"],["chart","Higher tax"],["plane","Family holidays"],["job","Leadership or business"]],
+        [["chart","Peak earnings"],["cap","Child at uni"],["home","Mortgage shrinking"],["coin","Catch-up super"],["key","Kids leaving home"]],
+        [["chart","Highest income"],["home","Mortgage nearly paid"],["heart","Adult children"],["car","Long trips"],["cross","Health costs rise"]],
+        [["sun","Empty nest"],["chart","Super grows fastest"],["plane","More travel"],["home","Downsizing"],["job","Phased retirement"]],
+        [["coin","Super accessible"],["sun","Many retire"],["cross","Health spending"],["sun","Retirement"],["coin","Super pension"]],
+        [["sun","Average retirement ~64-65"],["chart","Leisure spending"],["shield","Seniors Card"],["coin","Age Pension from 67"],["cross","Medicare costs"]],
+        [["home","Home equity main asset"],["coin","Pension + drawdown"],["cross","Health costs"],["heart","Grandchildren"],["coin","Minimum drawdowns"]],
+        [["home","Maintenance or downsize"],["car","Driving less"],["cross","Specialist care"],["heart","Family gifts"],["coin","Steady pension"]],
+        [["home","Home modifications"],["cross","Hospital and dental"],["coin","Fixed-income budget"],["heart","Power of attorney"],["person","Family support"]],
+        [["heart","Estate planning"],["cross","Health services"],["home","Retirement living"],["home","Village or home care"],["cross","Home Care Package"]],
+        [["coin","Aged care means test"],["cross","Respite"],["person","Family support"],["cross","Aged care costs"],["heart","Family support"]],
+        [["shield","Settling the estate"],["cross","Health"],["heart","Legacy gifts"],["home","Care planning"],["coin","Fixed income"]]
+      ];
+      function icon(n) { return '<svg class="i"><use href="#i-' + n + '"/></svg>'; }
+      var root = document.getElementById("rows");
+      for (var r = 0; r < 7; r++) {
+        var row = ROWS[r];
+        var start = 12 + r * 10;
+        var html = '<section class="row" style="--c:' + row.c + ';--ink:' + row.ink + '">' +
+          '<div class="row-label"><span class="swatch"></span>' + row.name + ' · ages ' + start + ' to ' + (start + 9) + '</div>' +
+          '<div class="grid">';
+        for (var k = 0; k < 5; k++) {
+          var age = start + k * 2;
+          var items = DATA[r * 5 + k] || [];
+          html += '<div class="card"><div class="age">' + age + '–' + (age + 1) + '<small>years</small></div><div class="icons">';
+          for (var j = 0; j < Math.min(items.length, 5); j++) {
+            var ic = items[j][0], label = items[j][1];
+            html += '<div class="item"><a href="/details/' + ic + '.html" title="' + label + '"><div class="circle">' + icon(ic) + '</div>' + label + '</a></div>';
+          }
+          html += '</div></div>';
+        }
+        html += '</div></section>';
+        root.insertAdjacentHTML("beforeend", html);
       }
-      html += `</div></section>`;
-      root.insertAdjacentHTML("beforeend", html);
     });
   </script>
 </body>
