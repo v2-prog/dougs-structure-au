@@ -1,0 +1,25 @@
+/* Per-row colour theme for age pages. Each ten-year row (Mountain View ... Silver Birch)
+   sets --c (row colour) and --acc (text-safe accent); the body class matches the band-head class. */
+body.t2{--c:#4E7A6B;--acc:#3A6354}
+body.t3{--c:#8C5E2F;--acc:#7A4F22}
+body.t4{--c:#C2B280;--acc:#7A6A2A}
+body.t5{--c:#5F6F78;--acc:#4A5963}
+body.t6{--c:#A85F55;--acc:#8F4A41}
+body.t7{--c:#2F5C6E;--acc:#2F5C6E}
+body.t8{--c:#C9CBC4;--acc:#4D5550}
+body[class^="t"]{--wash:color-mix(in srgb,var(--c) 18%,var(--bg));--wash2:color-mix(in srgb,var(--c) 6%,var(--bg));--edge:color-mix(in srgb,var(--c) 40%,var(--line));
+background:var(--wash2) linear-gradient(180deg,var(--wash) 0,var(--wash2) 520px) no-repeat}
+body[class^="t"] a{color:var(--acc)}
+body[class^="t"] .btn{background:var(--acc);color:#fff}
+body[class^="t"] .btn.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+body[class^="t"] h2{border-left:6px solid var(--acc);padding-left:10px}
+body[class^="t"] .card,body[class^="t"] .panel,body[class^="t"] .fact{border-color:var(--edge)}
+body[class^="t"] .card{border-top:5px solid var(--c)}
+body[class^="t"] .panel:not(.scn){border-top:5px solid var(--c)}
+body[class^="t"] .fact .tag,body[class^="t"] .fact .grp{color:var(--acc)}
+body[class^="t"] .band-head{box-shadow:0 6px 18px color-mix(in srgb,var(--c) 35%,transparent)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body[class^="t"]{--acc:color-mix(in srgb,var(--c) 55%,#fff);--wash:color-mix(in srgb,var(--c) 28%,var(--bg));--wash2:color-mix(in srgb,var(--c) 8%,var(--bg))}
+:root:not([data-theme="light"]) body[class^="t"] .btn{color:#121817}}
+:root[data-theme="dark"] body[class^="t"]{--acc:color-mix(in srgb,var(--c) 55%,#fff);--wash:color-mix(in srgb,var(--c) 28%,var(--bg));--wash2:color-mix(in srgb,var(--c) 8%,var(--bg))}
+:root[data-theme="dark"] body[class^="t"] .btn{color:#121817}
+@media print{body[class^="t"]{background:#fff}}
