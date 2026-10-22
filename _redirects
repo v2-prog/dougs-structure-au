@@ -1,3 +1,9 @@
 # Cloudflare Pages pretty URLs already serve succession.html at /succession
 # and redirect /succession.html to /succession.
 # Do not add the reverse rule. It loops and breaks every room link.
+
+# The poster is now the home page.
+/poster / 301
+/poster.html / 301
+# Older age-page links lived in /pages/.
+/pages/* /:splat 301
