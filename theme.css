@@ -23,3 +23,18 @@ body[class^="t"] .band-head{box-shadow:0 6px 18px color-mix(in srgb,var(--c) 35%
 :root[data-theme="dark"] body[class^="t"]{--acc:color-mix(in srgb,var(--c) 55%,#fff);--wash:color-mix(in srgb,var(--c) 28%,var(--bg));--wash2:color-mix(in srgb,var(--c) 8%,var(--bg))}
 :root[data-theme="dark"] body[class^="t"] .btn{color:#121817}
 @media print{body[class^="t"]{background:#fff}}
+
+/* Compact top: home, age, row, icons and prev/next in one band */
+body[class^="t"]{padding-block:14px 36px}
+body[class^="t"] .wrap{gap:20px}
+body[class^="t"] .band-head{padding:12px 16px;gap:10px 20px;justify-content:flex-start;border-radius:10px}
+body[class^="t"] .band-head .bh-id{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap;min-width:0}
+body[class^="t"] .band-head .age-big{font-size:clamp(1.6rem,4vw,2.1rem)}
+body[class^="t"] .band-head .bh-id p{font-size:.85rem;opacity:.92}
+body[class^="t"] .band-head .icons{gap:8px;margin-left:auto}
+body[class^="t"] .band-head .icons .i{width:22px;height:22px}
+.bh-nav{display:flex;flex-wrap:wrap;gap:6px}
+body[class^="t"] .band-head .bh-nav .btn,body[class^="t"] .band-head .bh-nav .btn.alt{background:color-mix(in srgb,var(--ink) 16%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--ink) 35%,transparent);padding:6px 10px;font-size:.82rem}
+body[class^="t"] .band-head .bh-nav .btn:hover{background:color-mix(in srgb,var(--ink) 26%,transparent);filter:none}
+body[class^="t"] .band-head a:focus-visible{outline-color:var(--ink)}
+@media (max-width:640px){body[class^="t"] .band-head .icons{margin-left:0}.bh-nav{width:100%}}
