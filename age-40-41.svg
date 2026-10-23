@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-labelledby="t d">
+  <title id="t">Ages 40–41: economic life stage</title>
+  <desc id="d">Five economic considerations: Earnings climb, Renovations, Extra repayments, Study again, Health checks.</desc>
+  <rect width="640" height="240" rx="14" fill="#C2B280"/>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#2A2410">40–41<tspan font-size="15" font-weight="400" dx="8">years</tspan></text>
+  <text x="612" y="52" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#2A2410" opacity="0.85">Khaki</text>
+  <circle cx="72" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(44,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></g>
+  <text x="72" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Earnings climb</text>
+  <circle cx="194" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(166,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7M6 10v10h12V10M10 20v-6h4v6"/></g>
+  <text x="194" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Renovations</text>
+  <circle cx="316" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(288,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6.5V8m0 8v1.5"/></g>
+  <text x="316" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Extra</text>
+  <text x="316" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">repayments</text>
+  <circle cx="438" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(410,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></g>
+  <text x="438" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Study again</text>
+  <circle cx="560" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(532,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/></g>
+  <text x="560" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Health checks</text>
+</svg>

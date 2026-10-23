@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-labelledby="t d">
+  <title id="t">Ages 36–37: economic life stage</title>
+  <desc id="d">Five economic considerations: Mortgage at its heaviest, Promotion, Second child, Kids&#x27; activities, Cost of living.</desc>
+  <rect width="640" height="240" rx="14" fill="#C2B280"/>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#2A2410">36–37<tspan font-size="15" font-weight="400" dx="8">years</tspan></text>
+  <text x="612" y="52" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#2A2410" opacity="0.85">Khaki</text>
+  <circle cx="72" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(44,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7M6 10v10h12V10M10 20v-6h4v6"/></g>
+  <text x="72" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Mortgage at its</text>
+  <text x="72" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">heaviest</text>
+  <circle cx="194" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(166,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></g>
+  <text x="194" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Promotion</text>
+  <circle cx="316" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(288,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/><path d="M4 5h2l2 9h10M8 10h11a6 6 0 00-6-5v5"/></g>
+  <text x="316" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Second child</text>
+  <circle cx="438" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(410,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17"/></g>
+  <text x="438" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Kids&#x27;</text>
+  <text x="438" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">activities</text>
+  <circle cx="560" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(532,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></g>
+  <text x="560" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Cost of living</text>
+</svg>

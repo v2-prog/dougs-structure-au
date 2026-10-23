@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-labelledby="t d">
+  <title id="t">Ages 42–43: economic life stage</title>
+  <desc id="d">Five economic considerations: School costs rise, Replacement car, Parents&#x27; care, Higher tax bracket, Family holidays.</desc>
+  <rect width="640" height="240" rx="14" fill="#5F6F78"/>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#FFFFFF">42–43<tspan font-size="15" font-weight="400" dx="8">years</tspan></text>
+  <text x="612" y="52" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFFFFF" opacity="0.85">Stormy Weather</text>
+  <circle cx="72" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(44,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"/></g>
+  <text x="72" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">School costs</text>
+  <text x="72" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">rise</text>
+  <circle cx="194" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(166,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-4l2-5h12l2 5v4M4 16h16M4 16v2M20 16v2"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></g>
+  <text x="194" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Replacement car</text>
+  <circle cx="316" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(288,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 19c0-3.5 2.5-5.5 6-5.5s6 2 6 5.5M16 14c3 0 5 1.5 5 4.5"/></g>
+  <text x="316" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Parents&#x27; care</text>
+  <circle cx="438" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(410,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></g>
+  <text x="438" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Higher tax</text>
+  <text x="438" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">bracket</text>
+  <circle cx="560" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(532,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l7 2 2 7zM10 13L21 4"/></g>
+  <text x="560" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Family holidays</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-labelledby="t d">
+  <title id="t">Ages 38–39: economic life stage</title>
+  <desc id="d">Five economic considerations: Kids&#x27; sport and school, Senior role, Insurance review, Investing beyond super, Ageing parents.</desc>
+  <rect width="640" height="240" rx="14" fill="#C2B280"/>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#2A2410">38–39<tspan font-size="15" font-weight="400" dx="8">years</tspan></text>
+  <text x="612" y="52" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#2A2410" opacity="0.85">Khaki</text>
+  <circle cx="72" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(44,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17"/></g>
+  <text x="72" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Kids&#x27; sport and</text>
+  <text x="72" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">school</text>
+  <circle cx="194" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(166,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6h6v2M3 13h18"/></g>
+  <text x="194" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Senior role</text>
+  <circle cx="316" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(288,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></g>
+  <text x="316" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Insurance</text>
+  <text x="316" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">review</text>
+  <circle cx="438" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(410,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9M12 12c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2-5-6-5 0 3 2 5 6 5z"/></g>
+  <text x="438" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Investing</text>
+  <text x="438" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">beyond super</text>
+  <circle cx="560" cy="116" r="38" fill="#2A2410" fill-opacity="0.16"/>
+  <g transform="translate(532,88) scale(2.3333)" fill="none" stroke="#2A2410" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3 19c0-3.5 2.5-5.5 6-5.5s6 2 6 5.5M16 14c3 0 5 1.5 5 4.5"/></g>
+  <text x="560" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#2A2410">Ageing parents</text>
+</svg>

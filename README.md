@@ -1,12 +1,20 @@
-# Research snapshot
+# Economic life stages (coeconomics.com)
 
-Each age page has a "Research snapshot" section built from `build_research.py`.
+Static site, no build step. Drop the contents of this folder into the repo path Cloudflare Pages serves
+(the repo root, or the folder set as the build output directory).
 
-- `sources.json` lists every figure used: topic, reference period, source organisation and exact page, a verbatim excerpt, and the ages it is shown for.
-- Figures were read from the source pages on 23 October 2026. Where a source publishes wider age groups than the two-year bands, the page shows the group that includes those ages and says so.
-- Not included because the age tables could not be read (they sit in Excel downloads): labour force participation by age, median earnings by age (except the highest group), home ownership split by age, and remaining life expectancy at ages other than 60 and 65.
+- `index.html`  the 7 x 5 grid of age bands, each a dropdown of five considerations
+- `pages/age-12-13.html` ... `pages/age-80-81.html`  one page per band, with sources, forms, videos, three income scenarios and a Home button
+- `svg/icons/*.svg`  35 self-contained line icons (24x24 viewBox, no external references)
+- `svg/ages/*.svg`  35 self-contained age cards (five icons and labels each)
+- `svg/economic-life-stages.svg`  the whole 7 x 5 poster as one SVG
+- `data/videos.json`  add YouTube video IDs per band, for example `"age-12-13": ["VIDEO_ID"]`
+- `assets/site.css`  shared styles
 
-## Updating
+## For Grok or another tool
+Upload any SVG from `svg/`. All colours are literal hex values and fonts fall back to Arial, so files render
+the same anywhere. To adapt an icon, change `stroke`, `stroke-width` or the path data.
 
-1. Edit the `FACTS` list in `build_research.py` (add or change a figure, its source and the ages it applies to).
-2. Run `python3 build_research.py <folder of age pages without research> <output folder> sources.json`. Running it again on pages that already have research is safe: the old section is replaced.
+## Content notes
+Figures are Australian averages. Government links point to department home pages; add deep links to specific
+forms once confirmed. Income scenarios are illustrative, not official brackets. Not financial advice.

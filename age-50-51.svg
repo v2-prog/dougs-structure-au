@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-labelledby="t d">
+  <title id="t">Ages 50–51: economic life stage</title>
+  <desc id="d">Five economic considerations: Highest average income, Mortgage near paid off, Supporting adult kids, Retirement planning, Investments.</desc>
+  <rect width="640" height="240" rx="14" fill="#5F6F78"/>
+  <text x="28" y="56" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#FFFFFF">50–51<tspan font-size="15" font-weight="400" dx="8">years</tspan></text>
+  <text x="612" y="52" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFFFFF" opacity="0.85">Stormy Weather</text>
+  <circle cx="72" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(44,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></g>
+  <text x="72" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Highest average</text>
+  <text x="72" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">income</text>
+  <circle cx="194" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(166,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7M6 10v10h12V10M10 20v-6h4v6"/></g>
+  <text x="194" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Mortgage near</text>
+  <text x="194" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">paid off</text>
+  <circle cx="316" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(288,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/></g>
+  <text x="316" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Supporting</text>
+  <text x="316" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">adult kids</text>
+  <circle cx="438" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(410,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></g>
+  <text x="438" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Retirement</text>
+  <text x="438" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">planning</text>
+  <circle cx="560" cy="116" r="38" fill="#FFFFFF" fill-opacity="0.16"/>
+  <g transform="translate(532,88) scale(2.3333)" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9M12 12c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2-5-6-5 0 3 2 5 6 5z"/></g>
+  <text x="560" y="184" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Investments</text>
+</svg>
